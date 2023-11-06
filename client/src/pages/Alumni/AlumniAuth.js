@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../store/AuthContext";
+import Navbar from "../../components/Navbar";
 
-const AlumniPages = () => {
-  const { isAuthenticated, userState, logout, dispatch } =
-    useContext(AuthContext);
+const AlumniAuth = ({ children }) => {
+  const { isAuthenticated, dispatch } = useContext(AuthContext);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,16 +27,12 @@ const AlumniPages = () => {
     return;
   }
 
-  const logoutHandler = () => {
-    logout(userState.token);
-  };
-
   return (
     <div>
-      <p>Welcome back, {userState.name}</p>
-      <button onClick={logoutHandler}>Logout</button>
+      <Navbar />
+      {children}
     </div>
   );
 };
 
-export default AlumniPages;
+export default AlumniAuth;
