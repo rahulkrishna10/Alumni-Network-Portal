@@ -28,7 +28,7 @@ const AlumniAuth = ({ children }) => {
   }
 
   return (
-    <div>
+    <div className="h-screen">
       <Navbar />
       {children}
     </div>

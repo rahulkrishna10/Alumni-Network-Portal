@@ -6,7 +6,7 @@ const auth = require("../middleware/auth");
 const router = new express.Router();
 
 //Create Job Postings
-router.post("/alumni/job_postings", auth, async (req, res) => {
+router.post("/alumni/job", auth, async (req, res) => {
   const email = req.user.email;
   const alumni = await User.isAlumni(email);
   if (!alumni) {
@@ -32,7 +32,7 @@ router.post("/alumni/job_postings", auth, async (req, res) => {
 });
 
 //Update Job Postings
-router.patch("/alumni/job_postings/:id", auth, async (req, res) => {
+router.patch("/alumni/job/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
   const allowedUpdates = ["title", "registration_date", "description"];
   const isValidOperation = updates.every((update) => {
@@ -60,7 +60,7 @@ router.patch("/alumni/job_postings/:id", auth, async (req, res) => {
 });
 
 //Delete Job Postings
-router.delete("/alumni/job_postings/:id", auth, async (req, res) => {
+router.delete("/alumni/job/:id", auth, async (req, res) => {
   try {
     const job = await Job.findOneAndDelete({
       _id: req.params.id,

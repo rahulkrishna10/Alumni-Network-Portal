@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="flex justify-between items-center px-5 py-3 shadow-sm">
+    <nav className="flex justify-between items-center px-5 py-3 shadow-sm h-[8%]">
       <span
         className="text-[#007BFF] text-2xl font-mono tracking-widest"
         title="Alumni Network Portal"
@@ -23,12 +23,8 @@ const Navbar = () => {
         <NavLink to="/alumni">ANP</NavLink>
       </span>
       <div className="flex flex-row items-center gap-5">
-        <NavLink to="/alumni/job" activeClassName="active">
-          Job Postings
-        </NavLink>
-        <NavLink to="/alumni/events" activeClassName="active">
-          Events
-        </NavLink>
+        <NavLink to="/alumni/job">Jobs</NavLink>
+        <NavLink to="/alumni/events">Events</NavLink>
         <div className="p-2">
           <FiBell className="text-lg" />
         </div>
