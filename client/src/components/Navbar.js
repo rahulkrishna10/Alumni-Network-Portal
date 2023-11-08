@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { FiUser, FiLogOut, FiBell } from "react-icons/fi";
-import { AuthContext } from "../store/AuthContext";
+import { AuthContext } from "../store/AuthContextProvider";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
@@ -28,7 +28,7 @@ const Navbar = () => {
         <div className="p-2">
           <FiBell className="text-lg" />
         </div>
-        <div className="flex flex-row items-center gap-2 border border-[#F8F9FA] p-2 relative">
+        <div className="flex flex-row items-center gap-2 border border-[#F8F9FA] p-2 relative hover:shadow-sm">
           <button className="text-black" onClick={dropDownHandler}>
             My Account
           </button>

@@ -1,10 +1,12 @@
-import React, { useReducer } from "react";
-import { AuthContext } from "./AuthContext";
+import React, { createContext, useReducer } from "react";
+// import { AuthContext } from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 const BASE_URL = "http://localhost:3001";
+
+export const AuthContext = createContext();
 
 const initialState = {
   isAuthenticated: false,

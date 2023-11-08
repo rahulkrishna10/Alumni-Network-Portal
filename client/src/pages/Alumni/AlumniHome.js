@@ -1,7 +1,10 @@
+import { useContext } from "react";
+
 const AlumniHome = () => {
+  const userState = JSON.parse(localStorage.getItem("userState"));
   return (
-    <div>
-      <h1>Alumni Home</h1>
+    <div className="p-5">
+      <h1 className="text-xl font-mono">Welcome, {userState.name}</h1>
     </div>
   );
 };

@@ -31,6 +31,20 @@ router.post("/alumni/job", auth, async (req, res) => {
   }
 });
 
+//Get all jobs
+router.get("/alumni/job", auth, async (req, res) => {
+  try {
+    console.log("success");
+    const jobs = await Job.find().sort({ created_date: -1 });
+    if (!jobs) {
+      res.status(400).send({ error: "Jobs not found" });
+    }
+    res.status(200).send(jobs);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
 //Update Job Postings
 router.patch("/alumni/job/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);

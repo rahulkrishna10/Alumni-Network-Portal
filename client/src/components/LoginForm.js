@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { AuthContext } from "../store/AuthContext";
+import { AuthContext } from "../store/AuthContextProvider";
+import { NavLink } from "react-router-dom";
 
 const LoginForm = () => {
   const { login } = useContext(AuthContext);
@@ -92,7 +93,12 @@ const LoginForm = () => {
           >
             Login
           </button>
-          <button className="p-3 shadow-sm">Register</button>
+          <p className="text-gray-500">
+            Don't have an account?{" "}
+            <NavLink to="/register" className="text-[#007BFF] hover:underline">
+              Register here
+            </NavLink>
+          </p>
           {error && (
             <p className="p-3 border border-red-600 bg-red-100 text-red-600">
               Email and Password is Required!
