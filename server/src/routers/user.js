@@ -62,6 +62,7 @@ router.post("/users/logout", auth, async (req, res) => {
   }
 });
 
+//Get user data
 router.get("/users/:id?", auth, async (req, res) => {
   try {
     const id = req.query.id;
@@ -80,6 +81,21 @@ router.get("/users/:id?", auth, async (req, res) => {
     res.status(200).send({ user: filteredUser, profile });
   } catch (err) {
     res.status(500).send(err);
+  }
+});
+
+//Search Users
+router.get("/users/search/:search?", auth, async (req, res) => {
+  try {
+    const query = req.params.search;
+    const users = await User.find({ name: { $regex: query, $options: "i" } });
+    if (!users) {
+      res.status(400).send({ error: "No users found" });
+      return;
+    }
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
   }
 });
 

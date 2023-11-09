@@ -1,6 +1,7 @@
 const express = require("express");
 const Admin = require("../models/admin");
 const Event = require("../models/events");
+const User = require("../models/user");
 
 const router = new express.Router();
 
@@ -8,7 +9,6 @@ const router = new express.Router();
 router.post("/admin", async (req, res) => {
   try {
     const admin = new Admin(req.body);
-    console.log(req.body);
     await admin.save();
 
     const adminData = {
@@ -42,12 +42,33 @@ router.post("/admin/login", async (req, res) => {
 router.post("/admin/events", async (req, res) => {
   try {
     const events = new Event(req.body);
-    console.log(req.body);
     await events.save();
   } catch (err) {
     res
       .status(500)
       .send({ error: "Failed to create event", detials: err.message });
+  }
+});
+
+//Alumni Directory
+router.get("/admin/directory", async (req, res) => {
+  try {
+    const users = await User.find({ user_type: "alumni" }).populate("profile");
+    if (!users) {
+      res.status(400).send({ error: "No users" });
+      return;
+    }
+    const usersData = users.map((user) => ({
+      user: {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+      profile: user.profile,
+    }));
+    res.status(200).send(usersData);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
   }
 });
 

@@ -36,7 +36,6 @@ router.post("/alumni/job", auth, async (req, res) => {
 //Get all jobs
 router.get("/alumni/job", auth, async (req, res) => {
   try {
-    console.log("success");
     const jobs = await Job.find().sort({ created_date: -1 });
     if (!jobs) {
       res.status(400).send({ error: "Jobs not found" });
@@ -103,7 +102,6 @@ router.get("/alumni/events", async (req, res) => {
       res.status(404).send("No Events Found");
       return;
     }
-    console.log(event);
     res.status(200).send(event);
   } catch (err) {
     res.status(500).send(err);
