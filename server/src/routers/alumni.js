@@ -93,7 +93,7 @@ router.delete("/alumni/job/:id", auth, async (req, res) => {
 });
 
 //Get Events
-router.get("/alumni/events", async (req, res) => {
+router.get("/alumni/events", auth, async (req, res) => {
   try {
     const event = await Event.find({
       $or: [{ category: "all" }, { category: "alumni" }],
@@ -104,7 +104,22 @@ router.get("/alumni/events", async (req, res) => {
     }
     res.status(200).send(event);
   } catch (err) {
-    res.status(500).send(err);
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//Get Event
+router.get("/alumni/events/:id", auth, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const event = await Event.findById(id);
+    if (!event) {
+      res.status(404).send("Event Not Found");
+      return;
+    }
+    res.status(200).send(event);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
   }
 });
 

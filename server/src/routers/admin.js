@@ -38,8 +38,8 @@ router.post("/admin/login", async (req, res) => {
   }
 });
 
-//Add Events
-router.post("/admin/events", async (req, res) => {
+//Create Events
+router.post("/admin/event", async (req, res) => {
   try {
     const events = new Event(req.body);
     await events.save();
@@ -47,6 +47,43 @@ router.post("/admin/events", async (req, res) => {
     res
       .status(500)
       .send({ error: "Failed to create event", detials: err.message });
+  }
+});
+
+//Update Events
+router.patch("/admin/event", async (req, res) => {
+  const updates = Object.keys(req.body);
+  const allowedUpdates = [
+    "title",
+    "description",
+    "location",
+    "contactEmail",
+    "contactPhone",
+    "registrationLink",
+  ];
+
+  const isValidOperation = updates.every((update) => {
+    return allowedUpdates.includes(update);
+  });
+
+  if (!isValidOperation) {
+    res.status(400).send({ error: "Invalid Updates" });
+  }
+  try {
+    const event = await Event.findOne({ id: req.body.id });
+
+    if (!event) {
+      res.status(400).send({ error: "Event not found" });
+    }
+
+    updates.forEach((update) => {
+      return (event[update] = req.body[update]);
+    });
+
+    event.save();
+    res.send(event);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
   }
 });
 
