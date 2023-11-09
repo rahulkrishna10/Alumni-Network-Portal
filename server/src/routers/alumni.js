@@ -2,6 +2,7 @@ const express = require("express");
 const Job = require("../models/jobs");
 const User = require("../models/user");
 const auth = require("../middleware/auth");
+const Event = require("../models/events");
 
 const router = new express.Router();
 
@@ -21,6 +22,7 @@ router.post("/alumni/job", auth, async (req, res) => {
     });
 
     job.posted_by = req.user._id;
+    job.posted_by_name = req.user.name;
     await job.save();
 
     res.status(201).send({ job });
@@ -88,6 +90,23 @@ router.delete("/alumni/job/:id", auth, async (req, res) => {
     res
       .status(400)
       .send({ error: "Failed to delete job posting", details: err.message });
+  }
+});
+
+//Get Events
+router.get("/alumni/events", async (req, res) => {
+  try {
+    const event = await Event.find({
+      $or: [{ category: "all" }, { category: "alumni" }],
+    });
+    if (event.length === 0) {
+      res.status(404).send("No Events Found");
+      return;
+    }
+    console.log(event);
+    res.status(200).send(event);
+  } catch (err) {
+    res.status(500).send(err);
   }
 });
 

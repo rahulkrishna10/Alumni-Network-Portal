@@ -6,6 +6,9 @@ const jobSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
+  posted_by_name: {
+    type: "String",
+  },
   posted_date: {
     type: Date,
     default: Date.now(),

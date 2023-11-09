@@ -62,4 +62,25 @@ router.post("/users/logout", auth, async (req, res) => {
   }
 });
 
+router.get("/users/:id?", auth, async (req, res) => {
+  try {
+    const id = req.query.id;
+    const user = await User.findById(id).populate("profile");
+    const profile = user.profile;
+    if (!user) {
+      res.status(400).send({ error: "User not found" });
+      return;
+    }
+    const filteredUser = {
+      _id: user.id,
+      name: user.name,
+      email: user.email,
+      type: user.type,
+    };
+    res.status(200).send({ user: filteredUser, profile });
+  } catch (err) {
+    res.status(500).send(err);
+  }
+});
+
 module.exports = router;
