@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 
 const adminSchema = new mongoose.Schema({
-  email: {
+  username: {
     type: String,
     required: true,
   },
@@ -13,8 +13,8 @@ const adminSchema = new mongoose.Schema({
 });
 
 //Login
-adminSchema.statics.findByCredentials = async (email, password) => {
-  const admin = await Admin.findOne({ email });
+adminSchema.statics.findByCredentials = async (username, password) => {
+  const admin = await Admin.findOne({ username });
 
   if (!admin) {
     throw new Error("Invalid username or password");

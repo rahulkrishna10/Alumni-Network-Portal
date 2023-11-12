@@ -92,7 +92,7 @@ router.delete("/alumni/job/:id", auth, async (req, res) => {
   }
 });
 
-//Get Events
+//Get Events for alumni
 router.get("/alumni/events", auth, async (req, res) => {
   try {
     const event = await Event.find({

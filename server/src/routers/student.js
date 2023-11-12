@@ -1,11 +1,24 @@
 const express = require("express");
-const User = require("../models/user");
 const Event = require("../models/events");
+const Job = require("../models/jobs");
 const auth = require("../middleware/auth");
 
 const router = new express.Router();
 
-//Events for Students
+//Get job details
+router.get("/student/job", auth, async (req, res) => {
+  try {
+    const jobs = await Job.find().sort({ created_date: -1 });
+    if (!jobs) {
+      res.status(400).send({ error: "Jobs not found" });
+    }
+    res.status(200).send(jobs);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//Get Events for Students
 router.get("/student/events", auth, async (req, res) => {
   try {
     const event = await Event.find({

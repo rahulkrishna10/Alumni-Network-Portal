@@ -13,7 +13,7 @@ router.post("/admin", async (req, res) => {
 
     const adminData = {
       id: admin._id,
-      email: admin.email,
+      username: admin.username,
     };
 
     res.status(201).send(adminData);
@@ -28,7 +28,7 @@ router.post("/admin", async (req, res) => {
 router.post("/admin/login", async (req, res) => {
   try {
     const admin = await Admin.findByCredentials(
-      req.body.email,
+      req.body.username,
       req.body.password
     );
 
@@ -57,7 +57,7 @@ router.patch("/admin/event", async (req, res) => {
     "title",
     "description",
     "location",
-    "contactEmail",
+    "contactusername",
     "contactPhone",
     "registrationLink",
   ];
@@ -90,20 +90,34 @@ router.patch("/admin/event", async (req, res) => {
 //Alumni Directory
 router.get("/admin/directory", async (req, res) => {
   try {
-    const users = await User.find({ user_type: "alumni" }).populate("profile");
-    if (!users) {
-      res.status(400).send({ error: "No users" });
-      return;
-    }
+    const users = await User.find({
+      user_type: "alumni",
+    }).populate("profile");
+
     const usersData = users.map((user) => ({
       user: {
         _id: user._id,
         name: user.name,
-        email: user.email,
+        username: user.username,
       },
       profile: user.profile,
     }));
+
     res.status(200).send(usersData);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//Delete Users
+router.delete("/admin/user/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      res.status(400).send({ error: "User not found" });
+    }
+    res.status(200).send(user);
   } catch (err) {
     res.status(500).send({ error: "Server Error" });
   }

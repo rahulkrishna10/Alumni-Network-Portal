@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const validator = require("validator");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
+const Profile = require("./profile");
 
 //User Schema
 const userSchema = new mongoose.Schema(
@@ -98,6 +99,12 @@ userSchema.pre("save", async function (next) {
   if (user.isModified("password")) {
     user.password = await bcrypt.hash(user.password, 8);
   }
+  next();
+});
+
+userSchema.pre("deleteOne", async function (next) {
+  const user = this;
+  await Profile.findOneAndRemove({ user: user._id });
   next();
 });
 

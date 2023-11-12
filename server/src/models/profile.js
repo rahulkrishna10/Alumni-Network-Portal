@@ -20,6 +20,12 @@ const profileSchema = new mongoose.Schema({
       message: "Invalid Email Address",
     },
   },
+  passingOutYear: {
+    type: Number,
+    required: function () {
+      return this.user_type === "alumni";
+    },
+  },
   bio: {
     type: "String",
   },

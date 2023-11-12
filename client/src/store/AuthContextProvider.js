@@ -17,16 +17,6 @@ const AuthContextProvider = ({ children }) => {
   const navigate = useNavigate();
   const [state, dispatch] = useReducer(AuthReducer, initialState);
 
-  // useEffect(() => {
-  //   const storedData = localStorage.getItem("userState");
-  //   if (storedData) {
-  //     dispatch({
-  //       type: "AUTHENTICATED",
-  //       payload: JSON.parse(storedData),
-  //     });
-  //   }
-  // }, []);
-
   const login = async (formData) => {
     try {
       const response = await axios.post(BASE_URL + "/users/login", formData);
