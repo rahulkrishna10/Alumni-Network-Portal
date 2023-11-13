@@ -4,13 +4,11 @@ const validator = require("validator");
 const profileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    required: true,
     ref: "User",
     unique: true,
   },
   email: {
     type: String,
-    required: true,
     unique: true,
     trim: true,
     validate: {
@@ -22,9 +20,6 @@ const profileSchema = new mongoose.Schema({
   },
   passingOutYear: {
     type: Number,
-    required: function () {
-      return this.user_type === "alumni";
-    },
   },
   bio: {
     type: "String",
@@ -34,7 +29,7 @@ const profileSchema = new mongoose.Schema({
     enum: ["male", "female"],
   },
   dateOfBirth: {
-    type: "String",
+    type: "Date",
     required: true,
   },
   jobTitle: {

@@ -81,7 +81,7 @@ const JobPost = () => {
         <h1 className="text-3xl font-mono">Create Post</h1>
         <form
           onSubmit={submitHandler}
-          className="flex flex-col my-3 border border-[#F8F9FA] gap-8 p-5"
+          className="flex flex-col my-3 border border-[#F8F9FA] gap-8 p-5 shadow-sm"
         >
           <div className="flex">
             <div className="w-[100%] flex flex-col gap-1 p-2">

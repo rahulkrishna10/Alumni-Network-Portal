@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import { FiUser, FiLogOut, FiBell } from "react-icons/fi";
+import { FiUser, FiLogOut } from "react-icons/fi";
 import { AuthContext } from "../store/AuthContextProvider";
 import { NavLink } from "react-router-dom";
 
-const Navbar = () => {
+const StudentNavbar = () => {
   const { logout, userState } = useContext(AuthContext);
   const [isDropDown, setIsDropDown] = useState(false);
   const dropDownHandler = () => {
@@ -20,13 +20,22 @@ const Navbar = () => {
         className="text-[#007BFF] text-2xl font-mono tracking-widest"
         title="Alumni Network Portal"
       >
-        <NavLink to="/alumni">ANP</NavLink>
+        <NavLink to="/student">ANP</NavLink>
       </span>
       <div className="flex flex-row items-center gap-5">
-        <NavLink to="/alumni/job">Jobs</NavLink>
-        <NavLink to="/alumni/events">Events</NavLink>
-        <div className="p-2">
-          <FiBell className="text-lg" />
+        <div className="flex flex-row items-center gap-5 pr-5 border-r-2 border-[#F8F9FA]">
+          <NavLink
+            to="/student/job"
+            className="hover:border-b border-[#007BFF]"
+          >
+            Jobs
+          </NavLink>
+          <NavLink
+            to="/student/events"
+            className="hover:border-b border-[#007BFF]"
+          >
+            Events
+          </NavLink>
         </div>
         <div className="flex flex-row items-center gap-2 border border-[#F8F9FA] p-2 relative hover:shadow-sm">
           <button className="text-black" onClick={dropDownHandler}>
@@ -38,7 +47,7 @@ const Navbar = () => {
                 onClick={() => {
                   setIsDropDown(false);
                 }}
-                to="/alumni/profile"
+                to="/student/profile"
                 className="flex flex-row items-center gap-2"
               >
                 <FiUser />
@@ -59,4 +68,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default StudentNavbar;

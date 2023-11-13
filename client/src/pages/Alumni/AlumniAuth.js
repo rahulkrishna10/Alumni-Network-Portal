@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../store/AuthContextProvider";
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/AlumniNavbar";
 
 const AlumniAuth = ({ children }) => {
   const { isAuthenticated, dispatch } = useContext(AuthContext);

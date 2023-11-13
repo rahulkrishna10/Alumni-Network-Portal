@@ -22,19 +22,19 @@ const JobBoard = () => {
   }, []);
 
   return (
-    <div className="h-[92%] inline-flex">
-      <div className="border border-[#F8F9FA] w-[25%] h-full px-8 py-10 flex flex-col gap-5">
+    <div className="h-[92%] px-20 flex flex-col">
+      <div className="px-5 py-10">
         <NavLink
           to="/alumni/job/create"
-          className="flex gap-2 border border-[#F8F9FA] p-3 w-fit hover:shadow-sm"
+          className="flex gap-2 p-3 border border-[#F8F9FA] w-fit"
         >
           <PiSuitcaseSimpleLight className="self-center text-lg text-[#007BFF]" />
           Create Job Post
         </NavLink>
       </div>
-      <div className="p-10 flex flex-col items-start gap-5 w-[85%]">
-        <h1 className="text-2xl font-mono ml-16">Jobs</h1>
-        <div className="w-full ml-3 px-14 flex flex-row gap-10 justify-between">
+      <div className="flex flex-col items-start gap-5 p-5">
+        <h1 className="text-2xl font-mono">Jobs</h1>
+        <div className="flex flex-row flex-wrap gap-10 justify-start">
           {jobData.map((data) => {
             return <JobCard key={data._id} data={data} />;
           })}

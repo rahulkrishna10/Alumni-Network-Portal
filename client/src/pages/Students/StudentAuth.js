@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../store/AuthContextProvider";
-import Navbar from "../../components/Navbar";
+import StudentNavbar from "../../components/StudentNavbar";
 
 const StudentAuth = ({ children }) => {
   const { isAuthenticated, dispatch } = useContext(AuthContext);
@@ -29,7 +29,7 @@ const StudentAuth = ({ children }) => {
 
   return (
     <div className="h-screen">
-      <Navbar />
+      <StudentNavbar />
       {children}
     </div>
   );

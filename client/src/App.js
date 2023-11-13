@@ -7,15 +7,18 @@ import AlumniHome from "./pages/Alumni/AlumniHome";
 import JobPost from "./pages/Alumni/JobPost";
 import JobBoard from "./pages/Alumni/JobBoard";
 import AdminLogin from "./components/AdminLogin";
-import AdminContextProvider from "./store/AdminContextProvider";
 import AdminAuth from "./pages/Admin/AdminAuth";
 import AdminHome from "./pages/Admin/AdminHome";
 import StudentAuth from "./pages/Students/StudentAuth";
 import StudentHome from "./pages/Students/StudentHome";
+import AlumniEvents from "./pages/Alumni/AlumniEvents";
+import AlumniDirectory from "./pages/Admin/AlumniDirectory";
+import Register from "./pages/Register";
 
 function App() {
   return (
     <Routes>
+      <Route path="/register" element={<Register />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/admin/login" element={<AdminLogin />} />
       <Route
@@ -51,6 +54,14 @@ function App() {
         }
       />
       <Route
+        path="/alumni/events"
+        element={
+          <AlumniAuth>
+            <AlumniEvents />
+          </AlumniAuth>
+        }
+      />
+      <Route
         path="/student"
         element={
           <StudentAuth>
@@ -63,6 +74,14 @@ function App() {
         element={
           <AdminAuth>
             <AdminHome />
+          </AdminAuth>
+        }
+      />
+      <Route
+        path="/admin/directory"
+        element={
+          <AdminAuth>
+            <AlumniDirectory />
           </AdminAuth>
         }
       />

@@ -43,6 +43,7 @@ router.post("/admin/event", async (req, res) => {
   try {
     const events = new Event(req.body);
     await events.save();
+    res.status(201).send(events);
   } catch (err) {
     res
       .status(500)
@@ -92,18 +93,27 @@ router.get("/admin/directory", async (req, res) => {
   try {
     const users = await User.find({
       user_type: "alumni",
-    }).populate("profile");
+    })
+      .sort({ name: 1 })
+      .populate("profile");
 
-    const usersData = users.map((user) => ({
-      user: {
-        _id: user._id,
-        name: user.name,
-        username: user.username,
-      },
-      profile: user.profile,
+    const flattenedData = users.map((user, index) => ({
+      _id: user._id,
+      name: user.name,
+      username: user.username,
+      email: user.profile[index].email,
+      passingOutYear: user.profile[index].passingOutYear,
+      // contacts: user.profile[index].contacts,
+      email: user.profile[index].email,
+      // bio: user.profile[index].bio,
+      gender: user.profile[index].gender,
+      dateOfBirth: user.profile[index].dateOfBirth,
+      jobTitle: user.profile[index].jobTitle,
+      companyName: user.profile[index].companyName,
+      // skills: user.profile[index].skills,
     }));
 
-    res.status(200).send(usersData);
+    res.status(200).send(flattenedData);
   } catch (err) {
     res.status(500).send({ error: "Server Error" });
   }
