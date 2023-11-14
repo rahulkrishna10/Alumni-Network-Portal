@@ -14,6 +14,7 @@ import StudentHome from "./pages/Students/StudentHome";
 import AlumniEvents from "./pages/Alumni/AlumniEvents";
 import AlumniDirectory from "./pages/Admin/AlumniDirectory";
 import Register from "./pages/Register";
+import EventPage from "./pages/EventPage";
 
 function App() {
   return (
@@ -58,6 +59,14 @@ function App() {
         element={
           <AlumniAuth>
             <AlumniEvents />
+          </AlumniAuth>
+        }
+      />
+      <Route
+        path="/alumni/event/:eventId"
+        element={
+          <AlumniAuth>
+            <EventPage />
           </AlumniAuth>
         }
       />
