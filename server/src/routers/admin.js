@@ -97,21 +97,21 @@ router.get("/admin/directory", async (req, res) => {
       .sort({ name: 1 })
       .populate("profile");
 
-    const flattenedData = users.map((user, index) => ({
-      _id: user._id,
-      name: user.name,
-      username: user.username,
-      email: user.profile[index].email,
-      passingOutYear: user.profile[index].passingOutYear,
-      // contacts: user.profile[index].contacts,
-      email: user.profile[index].email,
-      // bio: user.profile[index].bio,
-      gender: user.profile[index].gender,
-      dateOfBirth: user.profile[index].dateOfBirth,
-      jobTitle: user.profile[index].jobTitle,
-      companyName: user.profile[index].companyName,
-      // skills: user.profile[index].skills,
-    }));
+    const flattenedData = users.map((user) => {
+      const userProfile = user.profile && user.profile[0];
+      return {
+        _id: user._id,
+        name: user.name,
+        username: user.username,
+        isProfile: !!userProfile,
+        email: userProfile ? userProfile.email : null,
+        passingOutYear: userProfile ? userProfile.passingOutYear : null,
+        gender: userProfile ? userProfile.gender : null,
+        dateOfBirth: userProfile ? userProfile.dateOfBirth : null,
+        jobTitle: userProfile ? userProfile.jobTitle : null,
+        companyName: userProfile ? userProfile.companyName : null,
+      };
+    });
 
     res.status(200).send(flattenedData);
   } catch (err) {

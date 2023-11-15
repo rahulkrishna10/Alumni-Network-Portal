@@ -30,7 +30,6 @@ const profileSchema = new mongoose.Schema({
   },
   dateOfBirth: {
     type: "Date",
-    required: true,
   },
   jobTitle: {
     type: "String",

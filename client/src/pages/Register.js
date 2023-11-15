@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -97,6 +97,12 @@ const Register = () => {
         >
           Create Account
         </button>
+        <p>
+          Already have an account?{" "}
+          <NavLink to="/login" className="hover:underline text-[#007BFF]">
+            Login
+          </NavLink>
+        </p>
       </form>
     </div>
   );

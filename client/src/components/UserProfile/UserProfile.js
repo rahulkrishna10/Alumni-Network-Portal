@@ -6,6 +6,7 @@ import { FaLinkedinIn, FaGlobe } from "react-icons/fa";
 import { AiFillMail } from "react-icons/ai";
 import { MdOutlineArrowLeft } from "react-icons/md";
 import EditForm from "../EditProfile/EditForm";
+import CreateProfile from "../../pages/CreateProfile";
 
 const UserProfile = () => {
   const { userState } = useContext(AuthContext);
@@ -27,7 +28,7 @@ const UserProfile = () => {
         setProfileStatus(true);
       })
       .catch((e) => {
-        console.log(e);
+        console.log(e.message);
       });
     // eslint-disable-next-line
   }, []);
@@ -40,6 +41,7 @@ const UserProfile = () => {
           Back to home
         </Link>
       </div>
+      {!profileStatus && <CreateProfile />}
       {profileStatus && currentPage === "userProfile" && (
         <>
           {/* User Profile Header */}

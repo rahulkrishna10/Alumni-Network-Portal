@@ -7,6 +7,8 @@ const router = new express.Router();
 //Create Profile
 router.post("/users/profile", auth, async (req, res) => {
   try {
+    console.log(req.body);
+    console.log(req.user._id, req.user.email);
     const profile = new Profile({
       ...req.body,
       user: req.user._id,
@@ -15,9 +17,8 @@ router.post("/users/profile", auth, async (req, res) => {
     await profile.save();
     res.status(201).send(profile);
   } catch (err) {
-    res
-      .status(400)
-      .send({ error: "Failed to create profile", details: err.message });
+    console.log(err.message);
+    res.status(500).send(err.message);
   }
 });
 
@@ -27,6 +28,7 @@ router.get("/users/profile", auth, async (req, res) => {
     const profile = await Profile.findOne({ email: req.user.email });
     if (!profile) {
       res.status(404).send({ error: "Profile not found" });
+      return;
     }
     res.send(profile);
   } catch (e) {

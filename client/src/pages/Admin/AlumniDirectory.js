@@ -12,6 +12,8 @@ const AlumniDirectory = () => {
       .catch((e) => console.log(e.message));
   }, []);
 
+  const filteredData = data.filter((row) => row.isProfile);
+
   return (
     <div className="p-10">
       <h1 className="text-xl mx-10 font-mono">Alumni Directory</h1>
@@ -19,7 +21,7 @@ const AlumniDirectory = () => {
         <table className="w-[80%] text-sm text-left text-gray-500">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-              {data.map((row, index) => (
+              {filteredData.map((row, index) => (
                 <React.Fragment key={index}>
                   {Object.keys(row).map((key, index) => (
                     <th className="p-5 font-mono font-light" key={index}>
@@ -31,7 +33,7 @@ const AlumniDirectory = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((row, index) => (
+            {filteredData.map((row, index) => (
               <tr className="bg-white border-b" key={index}>
                 {Object.values(row).map((value) => (
                   <td className="p-5" key={index}>
