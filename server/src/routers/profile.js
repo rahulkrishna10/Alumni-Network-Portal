@@ -7,8 +7,6 @@ const router = new express.Router();
 //Create Profile
 router.post("/users/profile", auth, async (req, res) => {
   try {
-    console.log(req.body);
-    console.log(req.user._id, req.user.email);
     const profile = new Profile({
       ...req.body,
       user: req.user._id,

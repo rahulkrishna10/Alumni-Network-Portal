@@ -3,7 +3,7 @@ import axios from "axios";
 import { AuthContext } from "../../store/AuthContextProvider";
 import EventCard from "../../components/EventCard";
 
-const JobBoard = () => {
+const AlumniEvents = () => {
   const [events, setEvents] = useState([]);
   const { userState } = useContext(AuthContext);
 
@@ -33,4 +33,4 @@ const JobBoard = () => {
   );
 };
 
-export default JobBoard;
+export default AlumniEvents;

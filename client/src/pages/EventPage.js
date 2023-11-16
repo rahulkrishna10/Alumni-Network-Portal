@@ -18,8 +18,6 @@ const EventPage = () => {
       .then((response) => setData(response.data));
   }, []);
 
-  console.log(data);
-
   const dateString = data.startDate;
   const dateObject = new Date(dateString);
   const formattedDate = dateObject.toLocaleDateString("en-US", {

@@ -1,17 +1,28 @@
 import React, { useState, useContext } from "react";
 import { FiUser, FiLogOut, FiSearch } from "react-icons/fi";
 import { AuthContext } from "../store/AuthContextProvider";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const { logout, userState } = useContext(AuthContext);
   const [isDropDown, setIsDropDown] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
   const dropDownHandler = () => {
     setIsDropDown((prev) => !prev);
   };
 
+  const onChangeHandler = (e) => {
+    setSearchValue(e.target.value);
+  };
+
   const logoutHandler = () => {
     logout(userState.token);
+  };
+
+  const searchButtonHandler = (e) => {
+    e.preventDefault();
+    navigate(`/alumni/search/${searchValue}`);
   };
 
   return (
@@ -24,12 +35,16 @@ const Navbar = () => {
       </span>
       <div className="flex flex-row items-center gap-5">
         <div className="flex flex-row items-center gap-5 pr-5 border-r-2 border-[#F8F9FA]">
-          <form className="flex items-center bg-[#F8F9FA] p-1 px-3">
+          <form
+            onSubmit={searchButtonHandler}
+            className="flex items-center bg-[#F8F9FA] p-1 px-3"
+          >
             <input
               type="text"
               name="search"
               placeholder="Search People"
               className="p-1 font-mono outline-none bg-inherit"
+              onChange={onChangeHandler}
             />
             <button type="submit">
               <FiSearch />

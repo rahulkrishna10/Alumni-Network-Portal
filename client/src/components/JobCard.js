@@ -6,7 +6,7 @@ const JobCard = ({ data }) => {
   const description = data.description;
   const truncatedDescription = description.substring(0, 100) + "...";
   return (
-    <div className="w-[400px] h-[300px] border border-[#f3f2f5] p-5 flex flex-col justify-between gap-3 my-3 hover:shadow-md rounded-lg">
+    <div className="w-[400px] h-[300px] border border-[#f3f2f5] p-5 flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-lg">
       <div className="flex justify-between">
         <h2 className="text-xl font-mono">{data.company}</h2>
         <span
@@ -23,7 +23,7 @@ const JobCard = ({ data }) => {
         <button className="w-fit transition ease-in delay-150 text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
           View
         </button>
-        {userState.id === data.posted_by ? (
+        {userState.user_type === "alumni" && userState.id === data.posted_by ? (
           <button className="w-fit transition ease-in delay-150 text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
             Edit Post
           </button>

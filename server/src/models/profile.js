@@ -23,23 +23,29 @@ const profileSchema = new mongoose.Schema({
   },
   bio: {
     type: "String",
+    default: null,
   },
   gender: {
     type: "String",
     enum: ["male", "female"],
+    default: null,
   },
   dateOfBirth: {
     type: "Date",
+    default: null,
   },
   jobTitle: {
     type: "String",
+    default: null,
   },
   companyName: {
     type: "String",
+    default: null,
   },
   contacts: {
     linkedin: {
       type: "String",
+      default: null,
       validator: {
         validate: (value) => {
           return validator.isURL(value);
@@ -49,9 +55,11 @@ const profileSchema = new mongoose.Schema({
     },
     phone: {
       type: "Number",
+      default: null,
     },
     website: {
       type: "String",
+      default: null,
       validator: {
         validate: (value) => {
           return validator.isURL(value);
@@ -63,6 +71,7 @@ const profileSchema = new mongoose.Schema({
   skills: [
     {
       type: String,
+      default: null,
     },
   ],
 });

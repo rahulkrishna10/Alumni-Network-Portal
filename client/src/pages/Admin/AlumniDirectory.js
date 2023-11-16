@@ -21,25 +21,28 @@ const AlumniDirectory = () => {
         <table className="w-[80%] text-sm text-left text-gray-500">
           <thead className="text-xs text-gray-700 uppercase bg-gray-50">
             <tr>
-              {filteredData.map((row, index) => (
-                <React.Fragment key={index}>
-                  {Object.keys(row).map((key, index) => (
+              {Object.keys(filteredData[0] || {}).map(
+                (key, index) =>
+                  key !== "isProfile" && (
                     <th className="p-5 font-mono font-light" key={index}>
                       {key}
                     </th>
-                  ))}
-                </React.Fragment>
-              ))}
+                  )
+              )}
             </tr>
           </thead>
+
           <tbody>
             {filteredData.map((row, index) => (
               <tr className="bg-white border-b" key={index}>
-                {Object.values(row).map((value) => (
-                  <td className="p-5" key={index}>
-                    {value}
-                  </td>
-                ))}
+                {Object.keys(row).map(
+                  (key) =>
+                    key !== "isProfile" && (
+                      <td className="p-5" key={key}>
+                        {!row[key] ? "null" : row[key]}
+                      </td>
+                    )
+                )}
               </tr>
             ))}
           </tbody>

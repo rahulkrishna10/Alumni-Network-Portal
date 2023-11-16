@@ -1,20 +1,22 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import Register from "./pages/Register";
 import LoginForm from "./components/LoginForm";
-import AlumniAuth from "./pages/Alumni/AlumniAuth";
 import UserProfile from "./components/UserProfile/UserProfile";
+import AlumniAuth from "./pages/Alumni/AlumniAuth";
 import AlumniHome from "./pages/Alumni/AlumniHome";
+import AlumniEvents from "./pages/Alumni/AlumniEvents";
+
 import JobPost from "./pages/Alumni/JobPost";
-import JobBoard from "./pages/Alumni/JobBoard";
+import JobBoard from "./pages/JobBoard";
 import AdminLogin from "./components/AdminLogin";
 import AdminAuth from "./pages/Admin/AdminAuth";
 import AdminHome from "./pages/Admin/AdminHome";
 import StudentAuth from "./pages/Students/StudentAuth";
 import StudentHome from "./pages/Students/StudentHome";
-import AlumniEvents from "./pages/Alumni/AlumniEvents";
 import AlumniDirectory from "./pages/Admin/AlumniDirectory";
-import Register from "./pages/Register";
 import EventPage from "./pages/EventPage";
+import SearchProfile from "./pages/SearchProfile";
 
 function App() {
   return (
@@ -47,6 +49,14 @@ function App() {
         }
       />
       <Route
+        path="/alumni/search/:search"
+        element={
+          <AlumniAuth>
+            <SearchProfile />
+          </AlumniAuth>
+        }
+      />
+      <Route
         path="/alumni/job/create"
         element={
           <AlumniAuth>
@@ -75,6 +85,22 @@ function App() {
         element={
           <StudentAuth>
             <StudentHome />
+          </StudentAuth>
+        }
+      />
+      <Route
+        path="/student/profile"
+        element={
+          <StudentAuth>
+            <UserProfile />
+          </StudentAuth>
+        }
+      />
+      <Route
+        path="/student/job"
+        element={
+          <StudentAuth>
+            <JobBoard />
           </StudentAuth>
         }
       />
