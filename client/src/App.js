@@ -17,6 +17,9 @@ import StudentHome from "./pages/Students/StudentHome";
 import AlumniDirectory from "./pages/Admin/AlumniDirectory";
 import EventPage from "./pages/EventPage";
 import SearchProfile from "./pages/SearchProfile";
+import StudentEvents from "./pages/Students/StudentEvents";
+import JobPage from "./pages/JobPage";
+import EventsPost from "./pages/Admin/EventsPost";
 
 function App() {
   return (
@@ -45,6 +48,14 @@ function App() {
         element={
           <AlumniAuth>
             <JobBoard />
+          </AlumniAuth>
+        }
+      />
+      <Route
+        path="/alumni/job/:jobId"
+        element={
+          <AlumniAuth>
+            <JobPage />
           </AlumniAuth>
         }
       />
@@ -105,6 +116,22 @@ function App() {
         }
       />
       <Route
+        path="/student/events"
+        element={
+          <StudentAuth>
+            <StudentEvents />
+          </StudentAuth>
+        }
+      />
+      <Route
+        path="/student/search/:search"
+        element={
+          <StudentAuth>
+            <SearchProfile />
+          </StudentAuth>
+        }
+      />
+      <Route
         path="/admin"
         element={
           <AdminAuth>
@@ -117,6 +144,14 @@ function App() {
         element={
           <AdminAuth>
             <AlumniDirectory />
+          </AdminAuth>
+        }
+      />
+      <Route
+        path="/admin/events"
+        element={
+          <AdminAuth>
+            <EventsPost />
           </AdminAuth>
         }
       />

@@ -46,6 +46,20 @@ router.get("/alumni/job", auth, async (req, res) => {
   }
 });
 
+router.get("/alumni/job/:id", auth, async (req, res) => {
+  try {
+    const id = req.params.id;
+    const job = await Job.findById(id);
+    if (!job) {
+      res.status(404).send("Job Not Found");
+      return;
+    }
+    res.status(200).send(job);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
 //Update Job Postings
 router.patch("/alumni/job/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);

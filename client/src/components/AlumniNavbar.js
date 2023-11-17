@@ -3,7 +3,7 @@ import { FiUser, FiLogOut, FiSearch } from "react-icons/fi";
 import { AuthContext } from "../store/AuthContextProvider";
 import { NavLink, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const AlumniNavbar = () => {
   const navigate = useNavigate();
   const { logout, userState } = useContext(AuthContext);
   const [isDropDown, setIsDropDown] = useState(false);
@@ -91,4 +91,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default AlumniNavbar;

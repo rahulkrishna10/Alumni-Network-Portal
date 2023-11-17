@@ -37,7 +37,15 @@ router.get("/users/profile", auth, async (req, res) => {
 //Update Profile
 router.patch("/users/profile", auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["bio", "jobTitle", "companyName", "skills"];
+  const allowedUpdates = [
+    "bio",
+    "jobTitle",
+    "companyName",
+    "skills",
+    "contacts",
+    "skills",
+    "gender",
+  ];
 
   const isValidOperation = updates.every((update) => {
     return allowedUpdates.includes(update);

@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../store/AuthContextProvider";
+import { NavLink } from "react-router-dom";
 
 const JobCard = ({ data }) => {
   const { userState } = useContext(AuthContext);
@@ -20,13 +21,16 @@ const JobCard = ({ data }) => {
       <h1 className="text-2xl font-mono">{data.title}</h1>
       <p className="text-gray-600">{truncatedDescription}</p>
       <div className="inline-flex gap-3">
-        <button className="w-fit transition ease-in delay-150 text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
+        <NavLink
+          to={`/alumni/job/${data._id}`}
+          className="w-fit  text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm hover:shadow-lg"
+        >
           View
-        </button>
+        </NavLink>
         {userState.user_type === "alumni" && userState.id === data.posted_by ? (
-          <button className="w-fit transition ease-in delay-150 text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
+          <NavLink className="w-fit hover:shadow-lg text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
             Edit Post
-          </button>
+          </NavLink>
         ) : (
           ""
         )}
