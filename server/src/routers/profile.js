@@ -53,6 +53,7 @@ router.patch("/users/profile", auth, async (req, res) => {
 
   if (!isValidOperation) {
     res.status(400).send({ error: "Invalid Updates" });
+    return;
   }
 
   try {
@@ -71,6 +72,7 @@ router.patch("/users/profile", auth, async (req, res) => {
     res.send(profile);
   } catch (e) {
     res.status(500).send({ error: "Server Error" });
+    return;
   }
 });
 

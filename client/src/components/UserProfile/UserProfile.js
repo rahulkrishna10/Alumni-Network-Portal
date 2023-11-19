@@ -113,7 +113,7 @@ const UserProfile = () => {
           </div>
         </>
       )}
-      {currentPage === "editProfile" && <EditForm />}
+      {currentPage === "editProfile" && <EditForm data={data} />}
     </div>
   );
 };

@@ -35,10 +35,8 @@ const JobPage = () => {
     day: "numeric",
   });
 
-  console.log(data);
-
   return (
-    <div className="m-10 w-[60%] mx-auto border py-5 px-10 flex flex-col gap-5">
+    <div className="my-20 w-[60%] mx-auto border py-5 px-10 flex flex-col gap-8">
       <div>
         <h1 className="text-3xl font-mono">{data.company}</h1>
         <h2 className="text-2xl font-mono">{data.title}</h2>
@@ -56,16 +54,21 @@ const JobPage = () => {
       </div>
       <div>
         <h2 className="text-2xl font-mono">About</h2>
-        <p className="text-justify">{data.description}</p>
+        <p className="text-justify leading-7">{data.description}</p>
       </div>
       <p className="text-gray-600 w-fit hover:underline cursor-pointer">
         Posted by {data.posted_by_name}
       </p>
-      {/* 
-      <h2 className="text-2xl font-mono">Contacts</h2>
-      <p>{data.contactEmail}</p>
-      <p>{data.contactPhone}</p>
-      */}
+      {data.contact ? (
+        <button
+          title={data.contact.link}
+          className="w-fit text-[#007BFF] hover:underline"
+        >
+          Registration Link
+        </button>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -18,10 +18,9 @@ const JobPost = () => {
         ...formData.contacts,
         [e.target.name]: e.target.value,
       };
-
       setFormData({
         ...formData,
-        contacts: updatedContacts,
+        contact: updatedContacts,
       });
     } else if (e.target.name === "required_skills") {
       const skillsArray = e.target.value
@@ -61,6 +60,7 @@ const JobPost = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     formSubmit(e);
+    console.log(formData);
   };
 
   useEffect(() => {

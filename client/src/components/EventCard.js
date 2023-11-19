@@ -28,7 +28,7 @@ const EventCard = ({ data }) => {
       <div className="inline-flex gap-3">
         <NavLink
           to={`/alumni/event/${data._id}`}
-          className="w-fit transition ease-in delay-150 text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm"
+          className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm"
         >
           View Details
         </NavLink>

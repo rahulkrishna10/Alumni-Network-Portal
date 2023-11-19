@@ -1,6 +1,7 @@
 const express = require("express");
 const User = require("../models/user");
 const auth = require("../middleware/auth");
+const Event = require("../models/events");
 
 const router = new express.Router();
 
@@ -96,6 +97,36 @@ router.get("/users/search/:search?", auth, async (req, res) => {
     res.status(200).send(users);
   } catch (err) {
     res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//RSVP events
+router.post("/users/events/:eventId/rsvp", auth, async (req, res) => {
+  const { eventId } = req.params;
+  const response = req.body.response;
+  const userId = req.user._id;
+
+  try {
+    const event = await Event.findById(eventId);
+
+    if (!event) {
+      return res.status(404).send({ error: "Event not found" });
+    }
+    const existingRsvp = event.rsvp.find(
+      (entry) => String(entry.user) === String(userId)
+    );
+
+    if (existingRsvp) {
+      existingRsvp.response = response;
+    } else {
+      event.rsvp.push({ user: userId, response });
+    }
+    await event.save();
+
+    res.status(200).send({ response });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send({ error: "Internal Server Error" });
   }
 });
 

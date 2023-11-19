@@ -23,12 +23,12 @@ const JobCard = ({ data }) => {
       <div className="inline-flex gap-3">
         <NavLink
           to={`/alumni/job/${data._id}`}
-          className="w-fit  text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm hover:shadow-lg"
+          className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm hover:shadow-lg"
         >
           View
         </NavLink>
         {userState.user_type === "alumni" && userState.id === data.posted_by ? (
-          <NavLink className="w-fit hover:shadow-lg text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
+          <NavLink className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
             Edit Post
           </NavLink>
         ) : (
