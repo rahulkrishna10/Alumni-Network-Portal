@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import { FaPhoneAlt, FaMailBulk, FaGlobe } from "react-icons/fa";
 import { AuthContext } from "../store/AuthContextProvider";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
@@ -78,29 +79,34 @@ const EventPage = () => {
     day: "numeric",
   });
   return (
-    <>
-      <div className="m-10 w-[60%] mx-auto border border-[#F8F9FA] p-10 flex flex-col gap-3 shadow-sm">
-        <h1 className="text-3xl font-mono">{data.title}</h1>
+    <div className="flex gap-5 justify-around items-stretch m-20">
+      <div className="m-10 border border-[#F8F9FA] rounded-md p-10 flex flex-col gap-5 shadow-md">
+        <h1 className="text-4xl">{data.title}</h1>
         <div>
-          <h2 className="text-gray-600">Event Date</h2>
+          <h2 className="text-gray-600 font-mono">Description</h2>
+          <p className="text-xl">{data.description}</p>
+        </div>
+        <div>
+          <h2 className="text-gray-600 font-mono">Event Date</h2>
           <p className="text-xl">{formattedDate}</p>
         </div>
         <div>
-          <h2 className="text-2xl font-mono">About</h2>
-          <p>{data.description}</p>
+          <h2 className="text-gray-600 font-mono">Location</h2>
+          <p className="text-xl">{data.location}</p>
         </div>
-        <div>
-          <h2 className="text-2xl font-mono">Location</h2>
-          <p>{data.location}</p>
+        <h2 className="text-gray-600 font-mono">Contacts</h2>
+        <div className="flex gap-2 items-center">
+          <FaMailBulk className="text-xl" />
+          <p className="text-xl">{data.contactEmail}</p>
+          <FaPhoneAlt className="text-xl" />
+          <p className="text-xl">{data.contactPhone}</p>
+          <FaGlobe className="text-xl" />
+          <p className="text-xl">{data.registrationLink}</p>
         </div>
-        <h2 className="text-2xl font-mono">Contacts</h2>
-        <p>{data.contactEmail}</p>
-        <p>{data.contactPhone}</p>
-        <p>{data.registrationLink}</p>
       </div>
-      <div className="m-10 w-[60%] mx-auto border border-[#F8F9FA] p-10 flex justify-between gap-3 shadow-sm">
+      <div className="m-10 w-[25%] border border-[#F8F9FA] rounded-md p-10 flex flex-col gap-5 justify-between shadow-md">
         <div className="flex flex-col gap-5">
-          <h2 className="text-2xl font-mono">Will you attend ?</h2>
+          <h2 className="text-gray-600 font-mono text-lg">Will you attend ?</h2>
           <div className="flex gap-3">
             <button
               className="bg-[#007BFF] w-24 p-2 text-white"
@@ -117,13 +123,18 @@ const EventPage = () => {
           </div>
         </div>
         {rsvpChartData && (
-          <div className="w-[300px] h-[300px] border flex flex-col items-center border-[#F8F9FA] p-8 shadow-sm">
+          <div className="w-[300px] h-[300px] flex flex-col items-center p-8">
             <h1>RSVP Count</h1>
-            <Doughnut data={rsvpChartData} options={{ responsive: true }} />
+            <Doughnut
+              data={rsvpChartData}
+              options={{
+                responsive: true,
+              }}
+            />
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
