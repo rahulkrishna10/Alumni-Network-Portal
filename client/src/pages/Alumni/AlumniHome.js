@@ -26,7 +26,7 @@ const AlumniHome = () => {
     <div className="flex justify-between h-[85%] p-5 mx-20 mb-10">
       <div className="flex flex-col justify-around">
         <h1 className="text-5xl font-extralight">Dashboard</h1>
-        <div className="flex flex-col gap-5 w-[550px] my-5 bg-[#bfd5f5] p-10 rounded-xl">
+        <div className="flex flex-col gap-5 w-[550px] my-5 bg-[#f8f8f8] p-10 rounded-xl">
           <h3 className="text-3xl font-thin">Hi {userState.name}</h3>
           <p>
             Welcome back, {userState.name}! Reconnect with old friends, explore

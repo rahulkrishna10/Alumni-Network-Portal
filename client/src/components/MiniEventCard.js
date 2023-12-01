@@ -21,7 +21,7 @@ const MiniEventCard = ({ data, user }) => {
         >
           {data.title}
         </h1>
-        <p className="bg-[#bfd5f5] w-full p-5">{truncatedDescription}</p>
+        <p className="bg-[#f8f8f8] w-full p-5">{truncatedDescription}</p>
       </div>
     </div>
   );

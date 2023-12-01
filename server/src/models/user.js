@@ -102,7 +102,8 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-userSchema.pre("deleteOne", async function (next) {
+userSchema.pre("remove", async function (next) {
+  console.log("working");
   const user = this;
   await Profile.findOneAndRemove({ user: user._id });
   next();

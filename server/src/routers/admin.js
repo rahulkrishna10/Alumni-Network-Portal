@@ -123,9 +123,9 @@ router.get("/admin/directory", async (req, res) => {
 router.delete("/admin/user/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const user = await User.findByIdAndDelete(id);
+    const user = await User.findByIdAndRemove(id);
     if (!user) {
-      res.status(400).send({ error: "User not found" });
+      return res.status(400).send({ error: "User not found" });
     }
     res.status(200).send(user);
   } catch (err) {
