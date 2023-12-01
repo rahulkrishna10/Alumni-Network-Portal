@@ -1,12 +1,12 @@
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../store/AuthContextProvider";
+import { AuthContext } from "../store/AuthContextProvider";
 import { FaLinkedinIn, FaGlobe } from "react-icons/fa";
 import { AiFillMail } from "react-icons/ai";
 import { MdOutlineArrowLeft } from "react-icons/md";
-import EditForm from "../EditProfile/EditForm";
-import CreateProfile from "../../pages/CreateProfile";
+import EditForm from "./EditForm";
+import CreateProfile from "../pages/CreateProfile";
 
 const UserProfile = () => {
   const { userState } = useContext(AuthContext);
@@ -37,7 +37,7 @@ const UserProfile = () => {
     <div className="md:w-[50%] mx-auto my-5">
       <div className="flex flex-row items-center">
         <MdOutlineArrowLeft className="text-black" />
-        <Link to="/alumni" className="hover:underline">
+        <Link to={`/${userState.user_type}`} className="hover:underline">
           Back to home
         </Link>
       </div>
@@ -51,7 +51,7 @@ const UserProfile = () => {
               <h1 className="text-3xl font-mono">{userState.name}</h1>
               <p className="text-[#007BFF]">{data.jobTitle}</p>
               {/* User Bio */}
-              <div className="mt-5">
+              <div className="flex flex-col gap-2 mt-5">
                 <h2 className="text-2xl font-mono">About</h2>
                 <p className="text-justify">{data.bio}</p>
               </div>
@@ -71,7 +71,7 @@ const UserProfile = () => {
               <div>
                 <h2 className="text-2xl font-mono mb-2">Contacts</h2>
                 {data.contacts ? (
-                  <div className="">
+                  <div className="flex flex-col gap-2">
                     <a
                       className="text-lg flex items-center gap-2"
                       href={`https:${data.contacts["linkedin"]}`}
@@ -103,7 +103,9 @@ const UserProfile = () => {
               <div className="flex flex-wrap gap-3">
                 {data.skills ? (
                   data.skills.map((skill, index) => (
-                    <span className="border p-2 rounded-3xl">{skill}</span>
+                    <span className="border p-2" key={index}>
+                      {skill}
+                    </span>
                   ))
                 ) : (
                   <p>No skills available</p>

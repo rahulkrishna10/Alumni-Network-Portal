@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import LoginForm from "./components/LoginForm";
-import UserProfile from "./components/UserProfile/UserProfile";
+import UserProfile from "./components/UserProfile";
 import AlumniAuth from "./pages/Alumni/AlumniAuth";
 import AlumniHome from "./pages/Alumni/AlumniHome";
 import AlumniEvents from "./pages/Alumni/AlumniEvents";
@@ -20,6 +20,7 @@ import SearchProfile from "./pages/SearchProfile";
 import StudentEvents from "./pages/Students/StudentEvents";
 import JobPage from "./pages/JobPage";
 import EventsPost from "./pages/Admin/EventsPost";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -67,6 +68,15 @@ function App() {
           </AlumniAuth>
         }
       />
+      <Route
+        path="/alumni/search/user/:id"
+        element={
+          <AlumniAuth>
+            <Profile />
+          </AlumniAuth>
+        }
+      />
+
       <Route
         path="/alumni/job/create"
         element={
@@ -116,10 +126,26 @@ function App() {
         }
       />
       <Route
+        path="/student/job/:jobId"
+        element={
+          <StudentAuth>
+            <JobPage />
+          </StudentAuth>
+        }
+      />
+      <Route
         path="/student/events"
         element={
           <StudentAuth>
             <StudentEvents />
+          </StudentAuth>
+        }
+      />
+      <Route
+        path="/student/event/:eventId"
+        element={
+          <StudentAuth>
+            <EventPage />
           </StudentAuth>
         }
       />

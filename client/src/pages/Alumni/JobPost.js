@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { HiOutlineCheckCircle } from "react-icons/hi";
+import { MdOutlineArrowLeft } from "react-icons/md";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const JobPost = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
 
@@ -76,8 +79,14 @@ const JobPost = () => {
   }, [successMessage]);
 
   return (
-    <>
-      <div className="my-5 px-20 py-10">
+    <div className="m-10 px-32 relative">
+      <div className="flex items-center absolute left-52">
+        <MdOutlineArrowLeft className="text-black" />
+        <button className="hover:underline" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
+      </div>
+      <div className="my-5 px-20 py-10 ">
         <h1 className="text-3xl font-mono">Create Post</h1>
         <form
           onSubmit={submitHandler}
@@ -198,7 +207,7 @@ const JobPost = () => {
           )}
         </form>
       </div>
-    </>
+    </div>
   );
 };
 

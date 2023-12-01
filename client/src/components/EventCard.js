@@ -2,7 +2,7 @@ import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { NavLink } from "react-router-dom";
 
-const EventCard = ({ data }) => {
+const EventCard = ({ data, user }) => {
   const dateString = data.startDate;
   const dateObject = new Date(dateString);
 
@@ -27,7 +27,7 @@ const EventCard = ({ data }) => {
       </div>
       <div className="inline-flex gap-3">
         <NavLink
-          to={`/alumni/event/${data._id}`}
+          to={`/${user}/event/${data._id}`}
           className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm"
         >
           View Details

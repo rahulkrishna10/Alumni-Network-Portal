@@ -69,7 +69,7 @@ const StudentNavbar = () => {
             My Account
           </button>
           {isDropDown && (
-            <div className="flex flex-col items-center gap-2 absolute right-[0px] top-16 border border-[#F8F9FA] px-3 py-5 w-[150px]">
+            <div className="flex flex-col items-center gap-2 absolute right-[0px] top-16 border border-[#F8F9FA] px-3 py-5 w-[150px] z-10">
               <NavLink
                 onClick={() => {
                   setIsDropDown(false);

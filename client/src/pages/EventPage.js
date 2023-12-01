@@ -1,7 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { FaPhoneAlt, FaMailBulk, FaGlobe } from "react-icons/fa";
+import { MdOutlineArrowLeft } from "react-icons/md";
 import { AuthContext } from "../store/AuthContextProvider";
 import { Doughnut } from "react-chartjs-2";
 import { Chart, ArcElement, Tooltip, Legend } from "chart.js";
@@ -9,6 +10,7 @@ Chart.register(ArcElement, Tooltip, Legend);
 
 const EventPage = () => {
   const { userState } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { eventId } = useParams();
   const [data, setData] = useState({});
   const [rsvpChartData, setRsvpChartData] = useState(null);
@@ -42,7 +44,7 @@ const EventPage = () => {
             datasets: [
               {
                 data: [yesCount, noCount],
-                backgroundColor: ["#36A2EB", "#b5b5b5"],
+                backgroundColor: ["#36A2EB", "#d6d6d6"],
               },
             ],
           });
@@ -79,29 +81,37 @@ const EventPage = () => {
     day: "numeric",
   });
   return (
-    <div className="flex gap-5 justify-around items-stretch m-20">
-      <div className="m-10 border border-[#F8F9FA] rounded-md p-10 flex flex-col gap-5 shadow-md">
+    <div className="w-[92%] flex gap-5 justify-between mx-20 my-10 relative">
+      <div className="flex absolute items-center left-10">
+        <MdOutlineArrowLeft className="text-black" />
+        <button className="hover:underline" onClick={() => navigate(-1)}>
+          Go Back
+        </button>
+      </div>
+      <div className="m-10 border border-[#F8F9FA] rounded-md p-10 flex flex-col justify-between gap-5 shadow-md">
         <h1 className="text-4xl">{data.title}</h1>
         <div>
-          <h2 className="text-gray-600 font-mono">Description</h2>
-          <p className="text-xl">{data.description}</p>
+          <h2 className="text-gray-600 text-lg">Description</h2>
+          <p className="text-lg">{data.description}</p>
         </div>
         <div>
-          <h2 className="text-gray-600 font-mono">Event Date</h2>
-          <p className="text-xl">{formattedDate}</p>
+          <h2 className="text-gray-600 text-lg">Event Date</h2>
+          <p className="text-lg">{formattedDate}</p>
         </div>
         <div>
-          <h2 className="text-gray-600 font-mono">Location</h2>
-          <p className="text-xl">{data.location}</p>
+          <h2 className="text-gray-600 text-lg">Location</h2>
+          <p className="text-lg">{data.location}</p>
         </div>
-        <h2 className="text-gray-600 font-mono">Contacts</h2>
-        <div className="flex gap-2 items-center">
-          <FaMailBulk className="text-xl" />
-          <p className="text-xl">{data.contactEmail}</p>
-          <FaPhoneAlt className="text-xl" />
-          <p className="text-xl">{data.contactPhone}</p>
-          <FaGlobe className="text-xl" />
-          <p className="text-xl">{data.registrationLink}</p>
+        <div>
+          <h2 className="text-gray-600 text-lg">Contacts</h2>
+          <div className="flex gap-2 items-center">
+            <FaMailBulk className="text-xl text-[#3171b4]" />
+            <p className="text-lg">{data.contactEmail}</p>
+            <FaPhoneAlt className="text-xl text-[#3171b4]" />
+            <p className="text-lg">{data.contactPhone}</p>
+            <FaGlobe className="text-xl text-[#3171b4]" />
+            <p className="text-lg">{data.registrationLink}</p>
+          </div>
         </div>
       </div>
       <div className="m-10 w-[25%] border border-[#F8F9FA] rounded-md p-10 flex flex-col gap-5 justify-between shadow-md">

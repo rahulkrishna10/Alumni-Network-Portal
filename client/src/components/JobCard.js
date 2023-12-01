@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { AuthContext } from "../store/AuthContextProvider";
 import { NavLink } from "react-router-dom";
 
-const JobCard = ({ data }) => {
+const JobCard = ({ data, user }) => {
   const { userState } = useContext(AuthContext);
   const description = data.description;
   const truncatedDescription = description.substring(0, 100) + "...";
@@ -22,7 +22,7 @@ const JobCard = ({ data }) => {
       <p className="text-gray-600">{truncatedDescription}</p>
       <div className="inline-flex gap-3">
         <NavLink
-          to={`/alumni/job/${data._id}`}
+          to={`/${user}/job/${data._id}`}
           className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm hover:shadow-lg"
         >
           View

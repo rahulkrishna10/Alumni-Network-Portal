@@ -32,7 +32,7 @@ const JobBoard = () => {
       {userState.user_type === "student" ? (
         ""
       ) : (
-        <div className="px-5 py-10">
+        <div className="px-5 mx-5 pt-10">
           <NavLink
             to="/alumni/job/create"
             className="flex gap-2 p-3 border border-[#F8F9FA] w-fit"
@@ -42,11 +42,13 @@ const JobBoard = () => {
           </NavLink>
         </div>
       )}
-      <div className="flex flex-col items-start gap-5 p-5">
-        <h1 className="text-2xl font-mono">Jobs</h1>
+      <div className="flex flex-col items-start mx-5 gap-5 p-5">
+        <h1 className="text-2xl font-mono">Jobs & Internships</h1>
         <div className="flex flex-row flex-wrap gap-10 justify-start">
           {jobData.map((data) => {
-            return <JobCard key={data._id} data={data} />;
+            return (
+              <JobCard user={userState.user_type} key={data._id} data={data} />
+            );
           })}
         </div>
       </div>

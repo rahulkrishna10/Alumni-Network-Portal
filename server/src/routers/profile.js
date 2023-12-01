@@ -20,6 +20,21 @@ router.post("/users/profile", auth, async (req, res) => {
   }
 });
 
+//Get Profile of Other Users
+router.get("/users/profile/:id", auth, async (req, res) => {
+  try {
+    id = req.params.id;
+    const profile = await Profile.findOne({ user: id });
+    if (!profile) {
+      res.status(404).send({ error: "Profile not found" });
+      return;
+    }
+    res.send(profile);
+  } catch (e) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
 //Get Profile
 router.get("/users/profile", auth, async (req, res) => {
   try {

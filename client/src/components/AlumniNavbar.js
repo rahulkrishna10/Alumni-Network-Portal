@@ -22,7 +22,8 @@ const AlumniNavbar = () => {
 
   const searchButtonHandler = (e) => {
     e.preventDefault();
-    navigate(`/alumni/search/${searchValue}`);
+    e.target.reset();
+    navigate(`/alumni/search/${searchValue ? searchValue : null}`);
   };
 
   return (
@@ -43,7 +44,7 @@ const AlumniNavbar = () => {
               type="text"
               name="search"
               placeholder="Search People"
-              className="p-1 font-mono outline-none bg-inherit"
+              className="p-1 w-[250px] font-mono outline-none bg-inherit"
               onChange={onChangeHandler}
             />
             <button type="submit">
@@ -65,7 +66,7 @@ const AlumniNavbar = () => {
             My Account
           </button>
           {isDropDown && (
-            <div className="flex flex-col items-center gap-2 absolute right-[0px] top-16 border border-[#F8F9FA] px-3 py-5 w-[150px]">
+            <div className="flex flex-col items-center gap-2 absolute right-[0px] top-16 border border-[#F8F9FA] px-3 py-5 w-[150px] bg-white z-10">
               <NavLink
                 onClick={() => {
                   setIsDropDown(false);

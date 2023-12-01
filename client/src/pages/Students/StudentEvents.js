@@ -23,12 +23,18 @@ const StudentEvents = () => {
   }, []);
 
   return (
-    <div className="h-fullflex flex-col">
+    <div className="h-full">
       <div className="p-10 mx-10 flex flex-col items-start gap-5">
-        <h1 className="text-2xl px-10 font-mono">Events</h1>
+        <h1 className="text-2xl px-10 font-mono">Upcoming Events</h1>
         <div className="px-10 flex flex-row flex-wrap gap-3 items-center justify-between">
           {events.map((data) => {
-            return <EventCard key={data._id} data={data} />;
+            return (
+              <EventCard
+                user={userState.user_type}
+                key={data._id}
+                data={data}
+              />
+            );
           })}
         </div>
       </div>

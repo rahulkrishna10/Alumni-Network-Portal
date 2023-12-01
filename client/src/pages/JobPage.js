@@ -1,10 +1,13 @@
 import axios from "axios";
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { MdOutlineArrowLeft } from "react-icons/md";
+import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/AuthContextProvider";
+import { PiLinkThin } from "react-icons/pi";
 
 const JobPage = () => {
   const { userState } = useContext(AuthContext);
+  const navigate = useNavigate();
   const { jobId } = useParams();
   const [data, setData] = useState({});
 
@@ -36,39 +39,50 @@ const JobPage = () => {
   });
 
   return (
-    <div className="my-20 w-[60%] mx-auto border py-5 px-10 flex flex-col gap-8">
-      <div>
-        <h1 className="text-3xl font-mono">{data.company}</h1>
-        <h2 className="text-2xl font-mono">{data.title}</h2>
-        <h3 className="text-lg text-gray-600 font-mono">{data.type}</h3>
-      </div>
-      <div className="flex gap-10">
-        <div>
-          <h2 className="text-gray-600">Posted Date</h2>
-          <p className="text-lg">{formattedPostedDate}</p>
-        </div>
-        <div>
-          <h2 className="text-gray-600">Registration Date</h2>
-          <p className="text-lg">{formattedRegistrationDate}</p>
-        </div>
-      </div>
-      <div>
-        <h2 className="text-2xl font-mono">About</h2>
-        <p className="text-justify leading-7">{data.description}</p>
-      </div>
-      <p className="text-gray-600 w-fit hover:underline cursor-pointer">
-        Posted by {data.posted_by_name}
-      </p>
-      {data.contact ? (
-        <button
-          title={data.contact.link}
-          className="w-fit text-[#007BFF] hover:underline"
-        >
-          Registration Link
+    <div className="flex flex-col gap-5 mx-20 my-10 relative">
+      <div className="flex items-center left-10 absolute">
+        <MdOutlineArrowLeft className="text-black" />
+        <button className="hover:underline" onClick={() => navigate(-1)}>
+          Go Back
         </button>
-      ) : (
-        ""
-      )}
+      </div>
+      <div className="m-10 border border-[#f8f9fa] shadow-md p-10 flex flex-col gap-5 rounded-md">
+        <div>
+          <h1 className="text-3xl font-mono">{data.company}</h1>
+          <h2 className="text-2xl font-mono">{data.title}</h2>
+          <h3 className="text-lg text-gray-600 font-mono">{data.type}</h3>
+        </div>
+        <div className="flex gap-10">
+          <div>
+            <h2 className="text-gray-600">Posted Date</h2>
+            <p className="text-lg">{formattedPostedDate}</p>
+          </div>
+          <div>
+            <h2 className="text-gray-600">Registration Date</h2>
+            <p className="text-lg">{formattedRegistrationDate}</p>
+          </div>
+        </div>
+        <div>
+          <h2 className="text-gray-600">About</h2>
+          <p className="text-justify leading-7">{data.description}</p>
+          <div className="mt-2">
+            {data.contact ? (
+              <a
+                href={data.contact.link}
+                target="_blank"
+                title={data.contact.link}
+                className="w-fit text-[#007BFF] hover:underline flex items-center"
+              >
+                <PiLinkThin />
+                Registration Link
+              </a>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+        <p className="text-gray-600 w-fit text-s">{data.posted_by_name}</p>
+      </div>
     </div>
   );
 };
