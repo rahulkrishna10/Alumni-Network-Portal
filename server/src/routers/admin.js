@@ -119,6 +119,17 @@ router.get("/admin/directory", async (req, res) => {
   }
 });
 
+//Get all Users
+router.get("/admin/users", async (req, res) => {
+  try {
+    const users = await User.find({});
+
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
 //Delete Users
 router.delete("/admin/user/:id", async (req, res) => {
   try {

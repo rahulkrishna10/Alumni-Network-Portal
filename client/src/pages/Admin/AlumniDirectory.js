@@ -66,13 +66,16 @@ const AlumniDirectory = () => {
       </div>
 
       <div className="m-20 flex flex-col items-start mt-10">
-        <table className="w-full text-sm text-left border-2 border-[#F8F9FA] text-black shadow-sm">
-          <thead className="text-xl text-black capitalize">
+        <table className="w-full text-left text-black shadow-md">
+          <thead className="text-black text-base capitalize border-b-2">
             <tr>
               {Object.keys(filteredData[0] || {}).map(
                 (key, index) =>
                   key !== "isProfile" && (
-                    <th className="p-5 text-[#474747] font-normal" key={index}>
+                    <th
+                      className="p-5 text-[#474747] text-lg font-light"
+                      key={index}
+                    >
                       {key === "passingOutYear"
                         ? "Passing Out Year"
                         : key === "dateOfBirth"
