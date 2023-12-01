@@ -71,7 +71,7 @@ const JobPage = () => {
                 href={data.contact.link}
                 target="_blank"
                 title={data.contact.link}
-                className="w-fit text-[#007BFF] hover:underline flex items-center"
+                className="w-fit text-[#007BFF] hover:underline flex items-center hover:cursor-pointer"
               >
                 <PiLinkThin />
                 Registration Link

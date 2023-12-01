@@ -28,7 +28,11 @@ const JobCard = ({ data, user }) => {
           View
         </NavLink>
         {userState.user_type === "alumni" && userState.id === data.posted_by ? (
-          <NavLink className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm">
+          <NavLink
+            to={`/alumni/job/edit/${data._id}`}
+            state={data}
+            className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm"
+          >
             Edit Post
           </NavLink>
         ) : (

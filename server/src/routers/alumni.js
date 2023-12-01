@@ -63,13 +63,7 @@ router.get("/alumni/job/:id", auth, async (req, res) => {
 //Update Job Postings
 router.patch("/alumni/job/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = ["title", "registration_date", "description"];
-  const isValidOperation = updates.every((update) => {
-    return allowedUpdates.includes(update);
-  });
-  if (!isValidOperation) {
-    res.status(400).send({ error: "Invalid Updates" });
-  }
+
   try {
     const job = await Job.findOne({
       _id: req.params.id,
@@ -77,6 +71,7 @@ router.patch("/alumni/job/:id", auth, async (req, res) => {
     });
     if (!job) {
       res.status(404).send({ error: "Job posting not found" });
+      return;
     }
     updates.forEach((update) => {
       return (job[update] = req.body[update]);
@@ -97,8 +92,9 @@ router.delete("/alumni/job/:id", auth, async (req, res) => {
     });
     if (!job) {
       res.status(404).send({ error: "Job posting not found" });
+      return;
     }
-    res.send(job);
+    res.status(200).send(job);
   } catch (err) {
     res
       .status(400)

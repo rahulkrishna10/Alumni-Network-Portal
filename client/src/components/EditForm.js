@@ -70,6 +70,7 @@ const EditForm = ({ data }) => {
     console.log(formData);
     formSubmit(e);
   };
+
   return (
     <div className="mt-5 mb-20">
       <h1 className="text-3xl font-mono">Edit Profile</h1>

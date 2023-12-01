@@ -21,6 +21,8 @@ import StudentEvents from "./pages/Students/StudentEvents";
 import JobPage from "./pages/JobPage";
 import EventsPost from "./pages/Admin/EventsPost";
 import Profile from "./pages/Profile";
+import EditJob from "./pages/Alumni/EditJob";
+import ManageUsers from "./pages/Admin/ManageUsers";
 
 function App() {
   return (
@@ -57,6 +59,14 @@ function App() {
         element={
           <AlumniAuth>
             <JobPage />
+          </AlumniAuth>
+        }
+      />
+      <Route
+        path="/alumni/job/edit/:jobId"
+        element={
+          <AlumniAuth>
+            <EditJob />
           </AlumniAuth>
         }
       />
@@ -166,10 +176,10 @@ function App() {
         }
       />
       <Route
-        path="/admin/directory"
+        path="/admin/users"
         element={
           <AdminAuth>
-            <AlumniDirectory />
+            <ManageUsers />
           </AdminAuth>
         }
       />
@@ -178,6 +188,14 @@ function App() {
         element={
           <AdminAuth>
             <EventsPost />
+          </AdminAuth>
+        }
+      />
+      <Route
+        path="/admin/directory"
+        element={
+          <AdminAuth>
+            <AlumniDirectory />
           </AdminAuth>
         }
       />
