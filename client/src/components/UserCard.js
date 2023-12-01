@@ -11,20 +11,27 @@ const UserCard = ({ data }) => {
     });
   };
   return (
-    <div
-      className="flex flex-row justify-between items-center border rounded-lg border-[#F8F9FA] shadow-sm hover:shadow-md my-2 p-8"
-      onClick={handleUserProfile}
-    >
-      <div className="flex gap-3 items-center">
-        <span className="w-12 h-12 bg-blue-200 text-blue-500 text-4xl text-center rounded-full uppercase">
+    <div className="flex justify-stretch items-center border rounded-2xl border-[#F8F9FA] shadow-sm hover:shadow-md my-2 w-[550px] h-[200px]">
+      <div className="h-full flex flex-col justify-between items-center gap-3 bg-[#f7f7f7] p-10 ">
+        <span className="w-14 h-14 bg-white text-blue-500 text-4xl flex justify-center items-center rounded-full uppercase">
           {data.name.charAt(0)}
         </span>
-        <div className="flex flex-col ml-3">
-          <h1 className="text-2xl">{data.name}</h1>
-          <p className="text-md font-light">{data.email}</p>
+        <button
+          className="px-3 py-2 text-xs border text-[#007BFF] bg-white font-sans tracking-widest rounded-lg hover:bg-[#007BFF] hover:text-white"
+          onClick={handleUserProfile}
+        >
+          View Profile
+        </button>
+      </div>
+      <div className="flex flex-col h-full px-3 py-5 justify-evenly mx-3 capitalize">
+        <p className="bg-[#f7f7f7] text-black w-fit px-5 py-1 rounded-xl">
+          {data.user_type}
+        </p>
+        <div>
+          <h1 className="text-2xl font-mono">{data.name}</h1>
+          <p className="text-md font-light lowercase">{data.email}</p>
         </div>
       </div>
-      <p className="">{data.user_type}</p>
     </div>
   );
 };

@@ -24,6 +24,7 @@ const StudentNavbar = () => {
   const searchButtonHandler = (e) => {
     e.preventDefault();
     navigate(`/student/search/${searchValue}`);
+    e.target.reset();
   };
 
   return (
@@ -44,7 +45,7 @@ const StudentNavbar = () => {
               type="text"
               name="search"
               placeholder="Search People"
-              className="p-1 font-mono outline-none bg-inherit"
+              className="p-1 w-[250px] font-mono outline-none bg-inherit"
               onChange={onChangeHandler}
             />
             <button type="submit">

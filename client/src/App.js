@@ -168,6 +168,14 @@ function App() {
         }
       />
       <Route
+        path="/student/search/user/:id"
+        element={
+          <StudentAuth>
+            <Profile />
+          </StudentAuth>
+        }
+      />
+      <Route
         path="/admin"
         element={
           <AdminAuth>

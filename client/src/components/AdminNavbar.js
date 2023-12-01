@@ -18,9 +18,18 @@ const AdminNavbar = () => {
         <NavLink to="/admin">ANP</NavLink>
       </span>
       <div className="flex flex-row items-center gap-5">
-        <NavLink to="/admin/users">Manage Users</NavLink>
-        <NavLink to="/admin/events">Events</NavLink>
-        <NavLink to="/admin/directory">Alumni Directory</NavLink>
+        <NavLink to="/admin/users" className="hover:border-b border-[#007BFF]">
+          Manage Users
+        </NavLink>
+        <NavLink to="/admin/events" className="hover:border-b border-[#007BFF]">
+          Events
+        </NavLink>
+        <NavLink
+          to="/admin/directory"
+          className="hover:border-b border-[#007BFF]"
+        >
+          Alumni Directory
+        </NavLink>
         <div className="flex flex-row items-center gap-2 border border-[#F8F9FA] p-2 relative hover:shadow-sm">
           <button className="text-black" onClick={logoutHandler}>
             Logout

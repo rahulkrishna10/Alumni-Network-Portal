@@ -47,20 +47,23 @@ const AlumniDirectory = () => {
   return (
     <div className="p-10">
       <h1 className="text-2xl mx-20 font-mono">Alumni Directory</h1>
-      <select
-        className="mx-20 p-2 mt-6 bg-white border rounded-s"
-        onChange={handleYearChange}
-      >
-        <option value="">Select Year</option>
-        {Array.from({ length: 11 }, (_, index) => {
-          const year = 2017 + index;
-          return (
-            <option key={index} value={year}>
-              {year}
-            </option>
-          );
-        })}
-      </select>
+      <div className="mx-20 mt-6">
+        <label className="mr-2">Filter:</label>
+        <select
+          className="p-2 bg-white border rounded-s"
+          onChange={handleYearChange}
+        >
+          <option value="">Select Year</option>
+          {Array.from({ length: 11 }, (_, index) => {
+            const year = 2017 + index;
+            return (
+              <option key={index} value={year}>
+                {year}
+              </option>
+            );
+          })}
+        </select>
+      </div>
 
       <div className="m-20 flex flex-col items-start mt-10">
         <table className="w-full text-sm text-left border-2 border-[#F8F9FA] text-black shadow-sm">

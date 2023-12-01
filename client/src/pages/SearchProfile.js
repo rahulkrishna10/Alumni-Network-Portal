@@ -26,14 +26,16 @@ const SearchProfile = () => {
     );
   }
   return (
-    <div className="m-10 w-[60%] mx-auto p-10 flex flex-col gap-2">
+    <div className="m-10 w-[60%] mx-auto p-10">
       <h1 className="font-mono text-2xl mb-3">Search Results</h1>
-      {users.map((user) => {
-        if (user._id === userState.id) {
-          return null;
-        }
-        return <UserCard data={user} />;
-      })}
+      <div className="flex gap-5">
+        {users.map((user) => {
+          if (user._id === userState.id) {
+            return null;
+          }
+          return <UserCard data={user} />;
+        })}
+      </div>
     </div>
   );
 };
