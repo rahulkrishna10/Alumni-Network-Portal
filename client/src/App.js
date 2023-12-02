@@ -23,6 +23,7 @@ import EventsPost from "./pages/Admin/EventsPost";
 import Profile from "./pages/Profile";
 import EditJob from "./pages/Alumni/EditJob";
 import ManageUsers from "./pages/Admin/ManageUsers";
+import AdminEvents from "./pages/Admin/AdminEvents";
 
 function App() {
   return (
@@ -195,7 +196,7 @@ function App() {
         path="/admin/events"
         element={
           <AdminAuth>
-            <EventsPost />
+            <AdminEvents />
           </AdminAuth>
         }
       />

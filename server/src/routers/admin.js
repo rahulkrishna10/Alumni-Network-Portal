@@ -144,4 +144,34 @@ router.delete("/admin/user/:id", async (req, res) => {
   }
 });
 
+//Get Events
+router.get("/admin/events", async (req, res) => {
+  try {
+    const event = await Event.find();
+    if (!event) {
+      res.status(404).send("No Events Found");
+      return;
+    }
+    res.status(200).send(event);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//Delete Events
+router.delete("/admin/event/:id", async (req, res) => {
+  try {
+    const id = req.params.id;
+    const event = await Event.findByIdAndRemove(id);
+    if (!event) {
+      res.status(404).send({ error: "Event was not found" });
+      return;
+    }
+    res.status(200).send(event);
+  } catch (err) {
+    res
+      .status(400)
+      .send({ error: "Failed to delete event", details: err.message });
+  }
+});
 module.exports = router;

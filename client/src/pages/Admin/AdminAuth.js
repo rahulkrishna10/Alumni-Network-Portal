@@ -28,7 +28,7 @@ const AdminAuth = ({ children }) => {
   }
 
   return (
-    <div className="h-screen">
+    <div className="flex h-screen w-screen">
       <AdminNavbar />
       {children}
     </div>

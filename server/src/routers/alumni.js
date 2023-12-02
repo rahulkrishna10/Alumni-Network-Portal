@@ -118,7 +118,7 @@ router.get("/alumni/events", auth, async (req, res) => {
   }
 });
 
-//Get Event
+//Get event details
 router.get("/alumni/events/:id", auth, async (req, res) => {
   try {
     const id = req.params.id;

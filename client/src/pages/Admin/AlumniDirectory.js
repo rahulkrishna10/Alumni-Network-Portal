@@ -20,7 +20,7 @@ const AlumniDirectory = () => {
 
   const filteredData = data
     .filter((row) =>
-      selectedYear ? row.passingOutYear == selectedYear : row.isProfile
+      selectedYear ? row.passingOutYear === +selectedYear : row.isProfile
     )
     .slice(currentPage * pageSize, (currentPage + 1) * pageSize);
 
@@ -45,9 +45,9 @@ const AlumniDirectory = () => {
   };
 
   return (
-    <div className="p-10">
-      <h1 className="text-2xl mx-20 font-mono">Alumni Directory</h1>
-      <div className="mx-20 mt-6">
+    <div className="p-10 w-full mt-14">
+      <h1 className="text-2xl mx-10 font-mono">Alumni Directory</h1>
+      <div className="mx-10 mt-6">
         <label className="mr-2">Filter:</label>
         <select
           className="p-2 bg-white border rounded-s"
@@ -65,7 +65,7 @@ const AlumniDirectory = () => {
         </select>
       </div>
 
-      <div className="m-20 flex flex-col items-start mt-10">
+      <div className="mx-10 my-20 flex flex-col items-start mt-10">
         <table className="w-full text-left text-black shadow-md">
           <thead className="text-black text-base capitalize border-b-2">
             <tr>

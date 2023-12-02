@@ -46,7 +46,7 @@ const AdminContextProvider = ({ children }) => {
         payload: adminData,
       });
       localStorage.setItem("adminState", JSON.stringify(adminData));
-      navigate("/admin");
+      navigate("/admin/");
     } catch (err) {
       alert(err.response.data.error);
     }
