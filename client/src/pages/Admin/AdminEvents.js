@@ -3,8 +3,7 @@ import axios from "axios";
 import { FiSearch } from "react-icons/fi";
 import DeletePopup from "../../components/DeletePopup";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import { FaEllipsisVertical } from "react-icons/fa6";
-import EventsPost from "./EventsPost";
+import EventsPost from "../../components/EventsPost";
 
 const AlumniEvents = () => {
   const [events, setEvents] = useState([]);

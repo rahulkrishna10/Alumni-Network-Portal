@@ -1,29 +1,35 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+// Common Routes
 import Register from "./pages/Register";
 import LoginForm from "./components/LoginForm";
 import UserProfile from "./components/UserProfile";
+import SearchProfile from "./pages/SearchProfile";
+import JobPage from "./pages/JobPage";
+import Profile from "./pages/Profile";
+import EventPage from "./pages/EventPage";
+import JobBoard from "./pages/JobBoard";
+
+//Alumni Routes
 import AlumniAuth from "./pages/Alumni/AlumniAuth";
 import AlumniHome from "./pages/Alumni/AlumniHome";
 import AlumniEvents from "./pages/Alumni/AlumniEvents";
-
 import JobPost from "./pages/Alumni/JobPost";
-import JobBoard from "./pages/JobBoard";
+import EditJob from "./pages/Alumni/EditJob";
+
+//Student Routes
+import StudentAuth from "./pages/Students/StudentAuth";
+import StudentHome from "./pages/Students/StudentHome";
+import StudentEvents from "./pages/Students/StudentEvents";
+
+//Admin Routes
 import AdminLogin from "./components/AdminLogin";
 import AdminAuth from "./pages/Admin/AdminAuth";
 import AdminHome from "./pages/Admin/AdminHome";
-import StudentAuth from "./pages/Students/StudentAuth";
-import StudentHome from "./pages/Students/StudentHome";
 import AlumniDirectory from "./pages/Admin/AlumniDirectory";
-import EventPage from "./pages/EventPage";
-import SearchProfile from "./pages/SearchProfile";
-import StudentEvents from "./pages/Students/StudentEvents";
-import JobPage from "./pages/JobPage";
-import EventsPost from "./pages/Admin/EventsPost";
-import Profile from "./pages/Profile";
-import EditJob from "./pages/Alumni/EditJob";
-import ManageUsers from "./pages/Admin/ManageUsers";
 import AdminEvents from "./pages/Admin/AdminEvents";
+import ManageUsers from "./pages/Admin/ManageUsers";
 
 function App() {
   return (

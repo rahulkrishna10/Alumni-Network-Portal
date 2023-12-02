@@ -218,7 +218,7 @@ const ManageUsers = () => {
       )}
       {modalPopup ? (
         <NewUserModal
-          className="absolute bg-white h-auto w-[500px] top-[5%] left-[24%] z-50"
+          className="absolute bg-white h-auto w-[600px] top-[5%] left-[20%] z-50"
           onClose={() => setModalPopup(false)}
         />
       ) : (

@@ -39,47 +39,44 @@ const NewUserModal = ({ className, onClose }) => {
         <h2 className="text-2xl text-center tracking-widest mb-5">
           Create Account
         </h2>
-        <div className="flex flex-col gap-2 justify-between">
-          <label className="text-sm uppercase text-gray-600" htmlFor="name">
+        <div className="flex flex-col gap-2 justify-between px-2">
+          <label className="text-base text-gray-600" htmlFor="name">
             Full Name
           </label>
           <input
-            className="p-2 outline-none border focus:border-[#007BFF]"
+            className="p-2 outline-none border shadow-sm border-[#F8F9FA] focus:border-[#007BFF]"
             type="text"
             name="name"
             onChange={onChangeHandler}
             required
           />
         </div>
-        <div className="flex flex-col gap-2 justify-between">
-          <label className="text-sm uppercase text-gray-600" htmlFor="email">
+        <div className="flex flex-col gap-2 justify-between px-2">
+          <label className="text-base text-gray-600" htmlFor="email">
             Email
           </label>
           <input
-            className="p-2 outline-none border focus:border-[#007BFF]"
+            className="p-2 outline-none border shadow-sm border-[#F8F9FA] focus:border-[#007BFF]"
             type="email"
             name="email"
             onChange={onChangeHandler}
             required
           />
         </div>
-        <div className="flex flex-col gap-2 justify-between">
-          <label className="text-sm uppercase text-gray-600" htmlFor="password">
+        <div className="flex flex-col gap-2 justify-between px-2">
+          <label className="text-base text-gray-600" htmlFor="password">
             Password
           </label>
           <input
-            className="p-2 outline-none border focus:border-[#007BFF]"
+            className="p-2 outline-none border shadow-sm border-[#F8F9FA] focus:border-[#007BFF]"
             type="password"
             name="password"
             onChange={onChangeHandler}
             required
           />
         </div>
-        <div className="flex flex-col gap-2 justify-between">
-          <label
-            className="text-sm uppercase text-gray-600"
-            htmlFor="user_type"
-          >
+        <div className="flex flex-col gap-2 justify-between px-2">
+          <label className="text-base text-gray-600" htmlFor="user_type">
             User Type
           </label>
           <select
