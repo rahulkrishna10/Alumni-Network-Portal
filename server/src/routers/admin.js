@@ -2,6 +2,7 @@ const express = require("express");
 const Admin = require("../models/admin");
 const Event = require("../models/events");
 const User = require("../models/user");
+const Job = require("../models/jobs");
 
 const router = new express.Router();
 
@@ -38,42 +39,6 @@ router.post("/admin/login", async (req, res) => {
   }
 });
 
-//Create Events
-router.post("/admin/event", async (req, res) => {
-  try {
-    const events = new Event(req.body);
-    await events.save();
-    res.status(201).send(events);
-  } catch (err) {
-    res
-      .status(500)
-      .send({ error: "Failed to create event", detials: err.message });
-  }
-});
-
-//Update Events
-router.patch("/admin/event/:id", async (req, res) => {
-  const updates = Object.keys(req.body);
-
-  try {
-    const event = await Event.findById(req.params.id);
-
-    if (!event) {
-      res.status(400).send({ error: "Event not found" });
-      return;
-    }
-
-    updates.forEach((update) => {
-      return (event[update] = req.body[update]);
-    });
-
-    event.save();
-    res.send(event);
-  } catch (err) {
-    res.status(500).send({ error: "Server Error" });
-  }
-});
-
 //Alumni Directory
 router.get("/admin/directory", async (req, res) => {
   try {
@@ -105,6 +70,23 @@ router.get("/admin/directory", async (req, res) => {
   }
 });
 
+//Get User Count
+router.get("/admin/users/count", async (req, res) => {
+  try {
+    const alumniCount = await User.countDocuments({ user_type: "alumni" });
+    const studentsCount = await User.countDocuments({ user_type: "student" });
+
+    if (alumniCount === 0 && studentsCount === 0) {
+      res.status(400).send("No users found");
+      return;
+    }
+
+    res.status(200).send({ alumniCount, studentsCount });
+  } catch (err) {
+    res.status(500).send({ error: "Server Error", details: err.message });
+  }
+});
+
 //Get all Users
 router.get("/admin/users", async (req, res) => {
   try {
@@ -130,6 +112,33 @@ router.delete("/admin/user/:id", async (req, res) => {
   }
 });
 
+//Create Events
+router.post("/admin/event", async (req, res) => {
+  try {
+    const events = new Event(req.body);
+    await events.save();
+    res.status(201).send(events);
+  } catch (err) {
+    res
+      .status(500)
+      .send({ error: "Failed to create event", detials: err.message });
+  }
+});
+
+//Get event count
+router.get("/admin/event/count", async (req, res) => {
+  try {
+    const eventCount = (await Event.find()).length.toString();
+    if (!eventCount) {
+      res.status(400).send("No events found");
+    }
+
+    res.status(200).send(eventCount);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error", details: err.message });
+  }
+});
+
 //Get Events
 router.get("/admin/events", async (req, res) => {
   try {
@@ -139,6 +148,29 @@ router.get("/admin/events", async (req, res) => {
       return;
     }
     res.status(200).send(event);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//Update Events
+router.patch("/admin/event/:id", async (req, res) => {
+  const updates = Object.keys(req.body);
+
+  try {
+    const event = await Event.findById(req.params.id);
+
+    if (!event) {
+      res.status(400).send({ error: "Event not found" });
+      return;
+    }
+
+    updates.forEach((update) => {
+      return (event[update] = req.body[update]);
+    });
+
+    event.save();
+    res.send(event);
   } catch (err) {
     res.status(500).send({ error: "Server Error" });
   }
@@ -160,4 +192,19 @@ router.delete("/admin/event/:id", async (req, res) => {
       .send({ error: "Failed to delete event", details: err.message });
   }
 });
+
+//Get job count
+router.get("/admin/job/count", async (req, res) => {
+  try {
+    const jobCount = (await Job.find()).length.toString();
+    if (!jobCount) {
+      res.status(400).send("No events found");
+    }
+
+    res.status(200).send(jobCount);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error", details: err.message });
+  }
+});
+
 module.exports = router;
