@@ -35,15 +35,15 @@ const Register = () => {
     <div className="h-screen flex justify-center items-center">
       <form
         onSubmit={submitHandler}
-        className="w-[50%] flex flex-col justify-evenly gap-5 border p-5"
+        className="w-[50%] flex flex-col justify-evenly border px-20 py-10 gap-5 shadow-lg rounded-lg"
       >
-        <h2 className="text-4xl font-mono">Create Account</h2>
+        <h2 className="text-3xl font-mono">Create Account</h2>
         <div className="flex flex-col gap-2 justify-between">
-          <label className="text-lg text-gray-600" htmlFor="name">
+          <label className="text-base text-gray-600" htmlFor="name">
             Name
           </label>
           <input
-            className="p-2 outline-none border"
+            className="p-2 outline-none border-2 focus:border-[#007BFF]"
             type="text"
             name="name"
             onChange={onChangeHandler}
@@ -51,11 +51,11 @@ const Register = () => {
           />
         </div>
         <div className="flex flex-col gap-2 justify-between">
-          <label className="text-lg text-gray-600" htmlFor="email">
+          <label className="text-base text-gray-600" htmlFor="email">
             Email
           </label>
           <input
-            className="p-2 outline-none border"
+            className="p-2 outline-none border-2 focus:border-[#007BFF]"
             type="email"
             name="email"
             onChange={onChangeHandler}
@@ -63,11 +63,11 @@ const Register = () => {
           />
         </div>
         <div className="flex flex-col gap-2 justify-between">
-          <label className="text-lg text-gray-600" htmlFor="password">
+          <label className="text-base text-gray-600" htmlFor="password">
             Password
           </label>
           <input
-            className="p-2 outline-none border"
+            className="p-2 outline-none border-2 focus:border-[#007BFF]"
             type="password"
             name="password"
             onChange={onChangeHandler}
@@ -75,7 +75,7 @@ const Register = () => {
           />
         </div>
         <div className="flex flex-col gap-2 justify-between">
-          <label className="text-lg text-gray-600" htmlFor="user_type">
+          <label className="text-base text-gray-600" htmlFor="user_type">
             User Type
           </label>
           <select

@@ -60,6 +60,7 @@ router.patch("/users/profile", auth, async (req, res) => {
     "contacts",
     "skills",
     "gender",
+    "dateOfBirth",
   ];
 
   const isValidOperation = updates.every((update) => {

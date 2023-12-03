@@ -5,7 +5,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { AuthContext } from "../store/AuthContextProvider";
 import { PiLinkThin } from "react-icons/pi";
 
-const JobPage = () => {
+const JobDetails = () => {
   const { userState } = useContext(AuthContext);
   const navigate = useNavigate();
   const { jobId } = useParams();
@@ -87,4 +87,4 @@ const JobPage = () => {
   );
 };
 
-export default JobPage;
+export default JobDetails;

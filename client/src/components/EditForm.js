@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const EditForm = ({ data }) => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [isEmployed, setIsEmployed] = useState(false);
 
@@ -78,10 +77,12 @@ const EditForm = ({ data }) => {
         onSubmit={onsubmitHandler}
         className="mt-5 p-5 border border-[#F8F9FA] shadow-sm flex flex-col gap-5"
       >
-        <h2 className="text-2xl font-semibold">Basic Info</h2>
-        <div className="flex gap-3">
+        <h2 className="text-2xl text-neutral-800 font-semibold">Basic Info</h2>
+        <div className="flex justify-between gap-3">
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="">Passing Out Year</label>
+            <label className="text-neutral-600" htmlFor="">
+              Passing Out Year
+            </label>
             <input
               onChange={onChangeHandler}
               className="p-2 border rounded-md"
@@ -91,14 +92,28 @@ const EditForm = ({ data }) => {
             />
           </div>
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="gender">Gender</label>
+            <label className="text-neutral-600" htmlFor="">
+              Date Of Birth
+            </label>
+            <input
+              onChange={onChangeHandler}
+              className="p-2 border rounded-md"
+              type="date"
+              name="dateOfBirth"
+              defaultValue={data.dateOfBirth}
+            />
+          </div>
+          <div className="w-[50%] flex flex-col gap-2">
+            <label className="text-neutral-500 text-base" htmlFor="gender">
+              Gender
+            </label>
             <div className="flex gap-2">
               <input
                 type="radio"
                 name="gender"
                 id="male"
                 value="male"
-                checked={data.gender === "male"}
+                defaultChecked={data.gender === "male"}
                 onChange={onChangeHandler}
               />
               <label htmlFor="male">Male</label>
@@ -107,7 +122,7 @@ const EditForm = ({ data }) => {
                 name="gender"
                 id="female"
                 value="female"
-                checked={data.gender === "female"}
+                defaultChecked={data.gender === "female"}
                 onChange={onChangeHandler}
               />
               <label htmlFor="female">Female</label>
@@ -128,7 +143,9 @@ const EditForm = ({ data }) => {
             <h1 className="text-2xl font-semibold">Job Details</h1>
             <div className="flex gap-3">
               <div className="w-full flex flex-col gap-2">
-                <label htmlFor="jobtitle">Job Title</label>
+                <label className="text-neutral-600" htmlFor="jobtitle">
+                  Job Title
+                </label>
                 <input
                   onChange={onChangeHandler}
                   className="p-2 border rounded-md"
@@ -138,7 +155,9 @@ const EditForm = ({ data }) => {
                 />
               </div>
               <div className="w-full flex flex-col gap-2">
-                <label htmlFor="">Company Name</label>
+                <label className="text-neutral-600" htmlFor="">
+                  Company Name
+                </label>
                 <input
                   onChange={onChangeHandler}
                   className="p-2 border rounded-md"
@@ -150,10 +169,12 @@ const EditForm = ({ data }) => {
             </div>
           </>
         )}
-        <h1 className="text-2xl font-semibold">Contacts</h1>
+        <h2 className="text-2xl text-neutral-800 font-semibold">Contacts</h2>
         <div className="flex gap-3">
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="">LinkedIn</label>
+            <label className="text-neutral-600" htmlFor="">
+              LinkedIn
+            </label>
             <input
               onChange={onChangeHandler}
               className="p-2 border rounded-md"
@@ -163,7 +184,9 @@ const EditForm = ({ data }) => {
             />
           </div>
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="">Phone</label>
+            <label className="text-neutral-600" htmlFor="">
+              Phone
+            </label>
             <input
               onChange={onChangeHandler}
               className="p-2 border rounded-md"
@@ -173,7 +196,9 @@ const EditForm = ({ data }) => {
             />
           </div>
           <div className="w-full flex flex-col gap-2">
-            <label htmlFor="">Website</label>
+            <label className="text-neutral-600" htmlFor="">
+              Website
+            </label>
             <input
               onChange={onChangeHandler}
               className="p-2 border rounded-md"
@@ -183,11 +208,13 @@ const EditForm = ({ data }) => {
             />
           </div>
         </div>
-        <h1 className="text-2xl font-semibold">About Me</h1>
+        <h2 className="text-2xl text-neutral-800 font-semibold">About Me</h2>
 
         <div className="flex flex-col gap-3">
           <div className="flex flex-col gap-2 w-full">
-            <label htmlFor="">Skills (seperated by commas)</label>
+            <label className="text-neutral-600" htmlFor="">
+              Skills (seperated by commas)
+            </label>
             <input
               onChange={onChangeHandler}
               className="p-2 border rounded-md"
@@ -197,7 +224,9 @@ const EditForm = ({ data }) => {
             />
           </div>
           <div className="flex flex-col gap-2 w-full">
-            <label htmlFor="bio">Bio</label>
+            <label className="text-neutral-600" htmlFor="bio">
+              Bio
+            </label>
             <textarea
               onChange={onChangeHandler}
               className="w-full border rounded-md mb-2 p-2"

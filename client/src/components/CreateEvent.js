@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { SlClose } from "react-icons/sl";
 
-const EventsPost = ({ className, onClose }) => {
+const CreateEvent = ({ className, onClose }) => {
   const [formData, setFormData] = useState({});
 
   const onChangeHandler = (e) => {
@@ -26,7 +26,8 @@ const EventsPost = ({ className, onClose }) => {
     try {
       const response = await axios.post(BASE_URL + "/admin/event", formData);
       if (response.status === 201) {
-        e.target.reset();
+        alert("Event Created");
+        onClose();
       }
     } catch (e) {
       console.log(e);
@@ -157,4 +158,4 @@ const EventsPost = ({ className, onClose }) => {
   );
 };
 
-export default EventsPost;
+export default CreateEvent;

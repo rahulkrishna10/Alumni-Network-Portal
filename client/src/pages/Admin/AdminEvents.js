@@ -3,17 +3,19 @@ import axios from "axios";
 import { FiSearch } from "react-icons/fi";
 import DeletePopup from "../../components/DeletePopup";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
-import EventsPost from "../../components/EventsPost";
+import CreateEvent from "../../components/CreateEvent";
+import EditEvent from "../../components/EditEvent";
 
 const AlumniEvents = () => {
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const [popup, setPopup] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
-
+  const [editModal, setEditModal] = useState(false);
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
+  const [selectedEventData, setSelectedEventData] = useState(null);
 
   useEffect(() => {
     const BASE_URL = "http://localhost:3001";
@@ -26,7 +28,7 @@ const AlumniEvents = () => {
       })
       .catch((e) => console.log(e.message));
     // eslint-disable-next-line
-  }, []);
+  }, [editModal, modalPopup]);
 
   const handleDeleteEvent = async (eventId) => {
     try {
@@ -42,6 +44,11 @@ const AlumniEvents = () => {
     }
   };
 
+  const handleEditEvent = (eventId) => {
+    const selectedEvent = events.find((event) => event._id === eventId);
+    setSelectedEventData(selectedEvent);
+  };
+
   const handleSearch = () => {
     const searchTermLowerCase = searchTerm.toLowerCase();
     const filtered = events.filter((event) =>
@@ -52,10 +59,6 @@ const AlumniEvents = () => {
       )
     );
     setFilteredEvents(filtered);
-  };
-
-  const handleEditEvent = (eventId) => {
-    console.log(`Edit event with ID: ${eventId}`);
   };
 
   const pageSize = 5;
@@ -82,7 +85,11 @@ const AlumniEvents = () => {
 
   return (
     <div className="m-20 w-full mt-16 gap-7 relative">
-      <div className={(`-z-50` && popup) || modalPopup ? `blur-sm` : ``}>
+      <div
+        className={
+          (`-z-50` && popup) || modalPopup || editModal ? `blur-sm` : ``
+        }
+      >
         <div className={`text-left w-full mt-3`}>
           <div className="flex justify-between">
             <span className="text-left font-mono text-2xl py-5">
@@ -174,7 +181,10 @@ const AlumniEvents = () => {
                     <div className="flex gap-2 justify-between rounded-md">
                       <button
                         className="border p-2"
-                        onClick={() => handleEditEvent(event._id)}
+                        onClick={() => {
+                          setEditModal(!editModal);
+                          handleEditEvent(event._id);
+                        }}
                       >
                         Edit
                       </button>
@@ -241,9 +251,18 @@ const AlumniEvents = () => {
         ""
       )}
       {modalPopup ? (
-        <EventsPost
+        <CreateEvent
           className="absolute bg-white h-auto w-[700px] top-[5%] left-[17%] z-50"
           onClose={() => setModalPopup(false)}
+        />
+      ) : (
+        ""
+      )}
+      {editModal ? (
+        <EditEvent
+          className="absolute bg-white h-auto w-[700px] top-[5%] left-[17%] z-50"
+          onClose={() => setEditModal(false)}
+          selectedEventData={selectedEventData}
         />
       ) : (
         ""

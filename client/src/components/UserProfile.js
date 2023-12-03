@@ -111,7 +111,7 @@ const UserProfile = () => {
           </div>
           <button
             onClick={() => setCurrentPage("editProfile")}
-            className="p-2 border border-[#e7e8e9] rounded-lg text-[#007BFF]"
+            className="p-2 border border-[#e7e8e9] rounded-lg text-[#007BFF] hover:text-white hover:bg-[#007BFF]"
           >
             Edit Profile
           </button>

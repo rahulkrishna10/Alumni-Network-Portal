@@ -52,29 +52,15 @@ router.post("/admin/event", async (req, res) => {
 });
 
 //Update Events
-router.patch("/admin/event", async (req, res) => {
+router.patch("/admin/event/:id", async (req, res) => {
   const updates = Object.keys(req.body);
-  const allowedUpdates = [
-    "title",
-    "description",
-    "location",
-    "contactusername",
-    "contactPhone",
-    "registrationLink",
-  ];
 
-  const isValidOperation = updates.every((update) => {
-    return allowedUpdates.includes(update);
-  });
-
-  if (!isValidOperation) {
-    res.status(400).send({ error: "Invalid Updates" });
-  }
   try {
-    const event = await Event.findOne({ id: req.body.id });
+    const event = await Event.findById(req.params.id);
 
     if (!event) {
       res.status(400).send({ error: "Event not found" });
+      return;
     }
 
     updates.forEach((update) => {

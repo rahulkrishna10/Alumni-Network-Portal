@@ -6,7 +6,7 @@ import Register from "./pages/Register";
 import LoginForm from "./components/LoginForm";
 import UserProfile from "./components/UserProfile";
 import SearchProfile from "./pages/SearchProfile";
-import JobPage from "./pages/JobPage";
+import JobDetails from "./pages/JobDetails";
 import Profile from "./pages/Profile";
 import EventPage from "./pages/EventPage";
 import JobBoard from "./pages/JobBoard";
@@ -65,7 +65,7 @@ function App() {
         path="/alumni/job/:jobId"
         element={
           <AlumniAuth>
-            <JobPage />
+            <JobDetails />
           </AlumniAuth>
         }
       />
@@ -146,7 +146,7 @@ function App() {
         path="/student/job/:jobId"
         element={
           <StudentAuth>
-            <JobPage />
+            <JobDetails />
           </StudentAuth>
         }
       />
