@@ -2,8 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../store/AuthContextProvider";
-import { FaLinkedinIn, FaGlobe } from "react-icons/fa";
-import { AiFillMail } from "react-icons/ai";
 import { MdOutlineArrowLeft } from "react-icons/md";
 import EditForm from "./EditForm";
 import CreateProfile from "../pages/CreateProfile";
@@ -68,27 +66,27 @@ const UserProfile = () => {
               </h2>
               {data.contacts ? (
                 <div className="flex flex-col gap-2 mt-5">
-                  <a
+                  <button
                     className="text-lg flex items-center gap-2 w-fit"
-                    href={`https:${data.contacts["linkedin"]}`}
+                    // href={`https:${data.contacts["linkedin"]}`}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <span className="font-semibold">LinkedIn:</span>{" "}
                     {data.contacts["linkedin"]}
-                  </a>
-                  <a
+                  </button>
+                  <button
                     className="text-lg flex items-center gap-2 w-fit"
-                    href={`https:${data.contacts["website"]}`}
+                    // href={`https:${data.contacts["website"]}`}
                     target="_blank"
                     rel="noreferrer"
                   >
                     <span className="font-semibold">Website:</span>{" "}
                     {data.contacts["website"]}
-                  </a>
-                  <a className="text-lg flex items-center gap-2 w-fit">
+                  </button>
+                  <button className="text-lg flex items-center gap-2 w-fit">
                     <span className="font-semibold">Email:</span> {data.email}
-                  </a>
+                  </button>
                 </div>
               ) : (
                 ""

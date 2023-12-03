@@ -19,7 +19,7 @@ const JobDetails = () => {
     axios
       .get(BASE_URL + `/alumni/job/${jobId}`, { headers })
       .then((response) => setData(response.data));
-  }, []);
+  }, [jobId, userState.token]);
 
   const formattedPostedDate = new Date(data.posted_date).toLocaleDateString(
     undefined,
@@ -67,15 +67,15 @@ const JobDetails = () => {
           <p className="text-justify leading-7">{data.description}</p>
           <div className="mt-2">
             {data.contact ? (
-              <a
-                href={data.contact.link}
-                target="_blank"
+              <button
+                // href={data.contact.link}
+                // target="_blank"
                 title={data.contact.link}
                 className="w-fit text-[#007BFF] hover:underline flex items-center hover:cursor-pointer"
               >
                 <PiLinkThin />
                 Registration Link
-              </a>
+              </button>
             ) : (
               ""
             )}

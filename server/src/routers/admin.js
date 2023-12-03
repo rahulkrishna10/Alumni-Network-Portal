@@ -87,6 +87,22 @@ router.get("/admin/users/count", async (req, res) => {
   }
 });
 
+router.get("/admin/users/created_dates", async (req, res) => {
+  try {
+    const users = await User.find({}, "_id name createdAt"); // Fetching only necessary fields
+    const userData = users.map((user) => ({
+      userId: user._id,
+      name: user.name,
+      createdDate: user.createdAt,
+    }));
+
+    res.json(userData);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
 //Get all Users
 router.get("/admin/users", async (req, res) => {
   try {

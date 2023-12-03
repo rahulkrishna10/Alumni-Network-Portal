@@ -51,7 +51,7 @@ const CreateEvent = ({ className, onClose }) => {
         className="flex flex-col justify-evenly gap-5 border py-12 px-5 rounded-xl shadow-xl"
       >
         <h1 className="text-2xl text-center tracking-wide mb-5">
-          Create Events
+          Create Event
         </h1>
         <div className="flex">
           <div className="w-[100%] flex flex-col gap-1 p-2">
