@@ -32,7 +32,7 @@ const UserProfile = () => {
   }, []);
 
   return (
-    <div className="w-[60%] flex flex-col mx-auto my-5">
+    <div className="lg:w-[60%] flex flex-col mx-5 lg:mx-auto my-5">
       <div className="flex flex-row items-center">
         <MdOutlineArrowLeft className="text-black" />
         <Link to={`/${userState.user_type}`} className="hover:underline">

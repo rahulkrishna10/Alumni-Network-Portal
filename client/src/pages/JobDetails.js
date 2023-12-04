@@ -39,14 +39,14 @@ const JobDetails = () => {
   });
 
   return (
-    <div className="flex flex-col gap-5 mx-20 my-10 relative">
+    <div className="flex flex-col lg:mx-20 my-10 relative h-full">
       <div className="flex items-center left-10 absolute">
         <MdOutlineArrowLeft className="text-black" />
         <button className="hover:underline" onClick={() => navigate(-1)}>
           Go Back
         </button>
       </div>
-      <div className="m-10 border border-[#f8f9fa] shadow-md p-10 flex flex-col gap-5 rounded-md">
+      <div className="m-10 mt-16 border justify-center text-lg border-[#f8f9fa] shadow-md p-10 flex flex-col gap-10 rounded-md">
         <div>
           <h1 className="text-3xl font-mono">{data.company}</h1>
           <h2 className="text-2xl font-mono">{data.title}</h2>
@@ -62,26 +62,28 @@ const JobDetails = () => {
             <p className="text-lg">{formattedRegistrationDate}</p>
           </div>
         </div>
-        <div>
+        <div className="flex flex-col gap-5">
           <h2 className="text-gray-600">About</h2>
           <p className="text-justify leading-7">{data.description}</p>
           <div className="mt-2">
             {data.contact ? (
-              <button
-                // href={data.contact.link}
-                // target="_blank"
+              <a
+                href={data.contact.link}
+                target="_blank"
                 title={data.contact.link}
                 className="w-fit text-[#007BFF] hover:underline flex items-center hover:cursor-pointer"
               >
                 <PiLinkThin />
                 Registration Link
-              </button>
+              </a>
             ) : (
               ""
             )}
           </div>
         </div>
-        <p className="text-gray-600 w-fit text-s">{data.posted_by_name}</p>
+        <p className="text-gray-600 w-fit text-s">
+          Posted by - {data.posted_by_name}
+        </p>
       </div>
     </div>
   );

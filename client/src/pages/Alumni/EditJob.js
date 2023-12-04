@@ -1,13 +1,11 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { HiOutlineCheckCircle } from "react-icons/hi";
 import { MdOutlineArrowLeft } from "react-icons/md";
 
 const EditJob = () => {
   const location = useLocation();
   const data = location.state;
-  console.log(data);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
 
@@ -63,7 +61,6 @@ const EditJob = () => {
 
   const onsubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
     formSubmit(e);
   };
 
@@ -89,20 +86,20 @@ const EditJob = () => {
   };
 
   return (
-    <div className="m-10 px-32 relative">
-      <div className="flex items-center absolute left-52">
+    <div className="mx-10 lg:px-32">
+      <div className="flex items-center lg:ml-20 my-5">
         <MdOutlineArrowLeft className="text-black" />
         <button className="hover:underline" onClick={() => navigate(-1)}>
           Go Back
         </button>
       </div>
-      <div className="my-5 px-20 py-10 ">
+      <div className="lg:px-20 ">
         <h1 className="text-3xl font-mono">Edit Job</h1>
         <form
           onSubmit={onsubmitHandler}
           className="flex flex-col my-3 border border-[#F8F9FA] gap-8 p-5 shadow-sm"
         >
-          <div className="flex">
+          <div className="flex flex-wrap lg:flex-nowrap">
             <div className="w-[100%] flex flex-col gap-1 p-2">
               <label className="text-lg text-gray-600" htmlFor="title">
                 Job Title
@@ -128,7 +125,7 @@ const EditJob = () => {
               ></input>
             </div>
           </div>
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             <div className="w-[100%] flex flex-col gap-1 p-2">
               <label
                 className="text-lg text-gray-600"
@@ -185,7 +182,7 @@ const EditJob = () => {
             <label className="text-lg text-gray-600" htmlFor="required_skills">
               Contacts
             </label>
-            <div className="w-[100%] flex gap-2">
+            <div className="w-[100%] flex flex-col lg:flex-row gap-5 lg:gap-2">
               <input
                 onChange={onChangeHandler}
                 className="flex-1 p-2 outline-[#007BFF] border border-[#F8F9FA] shadow-sm"
@@ -220,12 +217,12 @@ const EditJob = () => {
           <div className="flex gap-3">
             <button
               type="submit"
-              className="w-fit text-white font-mono bg-[#007BFF] p-2 mt-5"
+              className="w-fit text-blue-500 border border-blue-500 hover:text-white hover:bg-blue-500 rounded-lg p-2 mt-5"
             >
               Update Job
             </button>
             <button
-              className="w-fit text-white font-mono bg-red-500 p-2 mt-5"
+              className="w-fit text-red-500 border border-red-500 hover:text-white hover:bg-red-500 rounded-lg p-2 mt-5"
               onClick={onDeleteHandler}
             >
               Delete Job

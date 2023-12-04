@@ -12,7 +12,7 @@ const EventCard = ({ data, user }) => {
   const description = data.description;
   const truncatedDescription = description.substring(0, 150) + "...";
   return (
-    <div className="w-[550px] h-[300px] border border-[#f3f2f5] p-5 flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-md">
+    <div className="w-[300px] h-auto lg:w-[550px] mx-10 lg:mx-0 lg:h-[300px] border border-[#F8F9FA] p-5 flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-lg">
       <div className="flex justify-start gap-5 items-center">
         <div className="flex flex-col text-center border justify-center w-[80px] h-[80px] rounded-full bg-blue-100">
           <span className="text-3xl leading-none text-[#007BFF]">{day}</span>

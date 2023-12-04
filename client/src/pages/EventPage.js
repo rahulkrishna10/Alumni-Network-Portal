@@ -82,7 +82,7 @@ const EventPage = () => {
     day: "numeric",
   });
   return (
-    <div className="w-[92%] flex gap-5 justify-between mx-20 my-10 relative">
+    <div className="lg:w-[92%] flex flex-col lg:flex-row gap-5 justify-between lg:mx-20 my-10 relative">
       <div className="flex absolute items-center left-10">
         <MdOutlineArrowLeft className="text-black" />
         <button className="hover:underline" onClick={() => navigate(-1)}>
@@ -103,9 +103,9 @@ const EventPage = () => {
           <h2 className="text-gray-600 text-lg">Location</h2>
           <p className="text-lg">{data.location}</p>
         </div>
-        <div>
+        <div className="">
           <h2 className="text-gray-600 text-lg">Contacts</h2>
-          <div className="flex gap-2 items-center">
+          <div className="flex gap-2 lg:items-center flex-col lg:flex-row">
             <FaMailBulk className="text-xl text-[#3171b4]" />
             <p className="text-lg">{data.contactEmail}</p>
             <FaPhoneAlt className="text-xl text-[#3171b4]" />
@@ -115,7 +115,7 @@ const EventPage = () => {
           </div>
         </div>
       </div>
-      <div className="m-10 w-[25%] border border-[#F8F9FA] rounded-md p-10 flex flex-col gap-5 justify-between shadow-md">
+      <div className="m-10 lg:w-[25%] border border-[#F8F9FA] rounded-md p-10 flex flex-col gap-5 justify-between shadow-md">
         <div className="flex flex-col gap-5">
           <h2 className="text-gray-600 font-mono text-lg">Will you attend ?</h2>
           <div className="flex gap-3">
@@ -134,7 +134,7 @@ const EventPage = () => {
           </div>
         </div>
         {rsvpChartData && (
-          <div className="w-[300px] h-[300px] flex flex-col items-center p-8">
+          <div className="lg:w-[300px] lg:h-[300px] flex flex-col items-center p-8">
             <h1>RSVP Count</h1>
             <Doughnut
               data={rsvpChartData}

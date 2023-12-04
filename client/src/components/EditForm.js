@@ -70,14 +70,14 @@ const EditForm = ({ data }) => {
   };
 
   return (
-    <div className="mt-5 mb-20">
+    <div className="mt-5 lg:mb-20">
       <h1 className="text-3xl font-mono">Edit Profile</h1>
       <form
         onSubmit={onsubmitHandler}
         className="mt-5 p-5 border border-[#F8F9FA] shadow-sm flex flex-col gap-5"
       >
         <h2 className="text-2xl text-neutral-800 font-semibold">Basic Info</h2>
-        <div className="flex justify-between gap-3">
+        <div className="flex flex-col lg:flex-row justify-between gap-3">
           <div className="w-full flex flex-col gap-2">
             <label className="text-neutral-600" htmlFor="">
               Passing Out Year
@@ -140,7 +140,7 @@ const EditForm = ({ data }) => {
         {isEmployed && (
           <>
             <h1 className="text-2xl font-semibold">Job Details</h1>
-            <div className="flex gap-3">
+            <div className="flex flex-col lg:flex-row gap-3">
               <div className="w-full flex flex-col gap-2">
                 <label className="text-neutral-600" htmlFor="jobtitle">
                   Job Title
@@ -169,7 +169,7 @@ const EditForm = ({ data }) => {
           </>
         )}
         <h2 className="text-2xl text-neutral-800 font-semibold">Contacts</h2>
-        <div className="flex gap-3">
+        <div className="flex flex-col lg:flex-row gap-3">
           <div className="w-full flex flex-col gap-2">
             <label className="text-neutral-600" htmlFor="">
               LinkedIn

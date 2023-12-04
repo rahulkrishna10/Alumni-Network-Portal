@@ -35,7 +35,7 @@ const Register = () => {
     <div className="h-screen flex justify-center items-center">
       <form
         onSubmit={submitHandler}
-        className="w-[50%] flex flex-col justify-evenly border px-20 py-10 gap-5 shadow-lg rounded-lg"
+        className="lg:w-[50%] flex flex-col justify-evenly border p-10 lg:px-20 py-10 gap-5 shadow-lg rounded-lg"
       >
         <h2 className="text-3xl font-mono">Create Account</h2>
         <div className="flex flex-col gap-2 justify-between">

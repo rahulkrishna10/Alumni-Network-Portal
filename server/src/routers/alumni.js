@@ -63,6 +63,7 @@ router.get("/alumni/job/:id", auth, async (req, res) => {
 //Update Job Postings
 router.patch("/alumni/job/:id", auth, async (req, res) => {
   const updates = Object.keys(req.body);
+  console.log(req.body);
 
   try {
     const job = await Job.findOne({
@@ -74,6 +75,7 @@ router.patch("/alumni/job/:id", auth, async (req, res) => {
       return;
     }
     updates.forEach((update) => {
+      console.log(req.body[update]);
       return (job[update] = req.body[update]);
     });
     job.save();

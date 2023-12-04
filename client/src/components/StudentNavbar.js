@@ -33,7 +33,7 @@ const StudentNavbar = () => {
         className="text-[#007BFF] text-2xl font-mono tracking-widest"
         title="Alumni Network Portal"
       >
-        <NavLink to="/student">ANP</NavLink>
+        <span>ANP</span>
       </span>
       <div className="flex flex-row items-center gap-5">
         <div className="flex flex-row items-center gap-5 pr-5 border-r-2 border-[#F8F9FA]">
@@ -52,6 +52,9 @@ const StudentNavbar = () => {
               <FiSearch />
             </button>
           </form>
+          <NavLink to="/student" className="hover:border-b border-[#007BFF]">
+            Home
+          </NavLink>
           <NavLink
             to="/student/job"
             className="hover:border-b border-[#007BFF]"

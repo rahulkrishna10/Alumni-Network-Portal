@@ -79,20 +79,20 @@ const JobPost = () => {
   }, [successMessage]);
 
   return (
-    <div className="m-10 px-32 relative">
-      <div className="flex items-center absolute left-52">
+    <div className="mx-10 mt-5 lg:px-32">
+      <div className="flex items-center lg:px-20 lg:ml-20 my-5">
         <MdOutlineArrowLeft className="text-black" />
         <button className="hover:underline" onClick={() => navigate(-1)}>
           Go Back
         </button>
       </div>
-      <div className="my-5 px-20 py-10 ">
+      <div className="lg:px-20 py-5">
         <h1 className="text-3xl font-mono">Create Post</h1>
         <form
           onSubmit={submitHandler}
           className="flex flex-col my-3 border border-[#F8F9FA] gap-8 p-5 shadow-sm"
         >
-          <div className="flex">
+          <div className="flex flex-wrap lg:flex-nowrap">
             <div className="w-[100%] flex flex-col gap-1 p-2">
               <label className="text-lg text-gray-600" htmlFor="title">
                 Job Title
@@ -116,7 +116,7 @@ const JobPost = () => {
               ></input>
             </div>
           </div>
-          <div className="flex">
+          <div className="flex flex-col lg:flex-row">
             <div className="w-[100%] flex flex-col gap-1 p-2">
               <label
                 className="text-lg text-gray-600"
@@ -164,7 +164,7 @@ const JobPost = () => {
             <label className="text-lg text-gray-600" htmlFor="required_skills">
               Contacts
             </label>
-            <div className="w-[100%] flex gap-2">
+            <div className="w-[100%] flex flex-col lg:flex-row gap-2">
               <input
                 onChange={onChangeHandler}
                 className="flex-1 p-2 outline-[#007BFF] border border-[#F8F9FA] shadow-sm"
@@ -181,7 +181,7 @@ const JobPost = () => {
               />
             </div>
           </div>
-          <div className="w-[100%] flex flex-col gap-1 p-2">
+          <div className="w-[100%] flex flex-col gap-1 px-2">
             <label className="text-lg text-gray-600" htmlFor="description">
               Job Descripton
             </label>
@@ -195,7 +195,7 @@ const JobPost = () => {
           </div>
           <button
             type="submit"
-            className="w-fit text-white font-mono bg-[#007BFF] p-2 mt-5"
+            className="w-fit text-white rounded-lg bg-[#007BFF] p-2 mt-5"
           >
             Create Job Posting
           </button>

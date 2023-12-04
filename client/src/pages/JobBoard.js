@@ -40,7 +40,7 @@ const JobBoard = () => {
   });
 
   return (
-    <div className="h-[92%] px-20 flex flex-col">
+    <div className="h-[92%] md:px-20 flex flex-col">
       {userState.user_type === "student" ? (
         ""
       ) : (

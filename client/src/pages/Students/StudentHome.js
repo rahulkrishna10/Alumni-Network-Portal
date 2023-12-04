@@ -4,6 +4,10 @@ import axios from "axios";
 import { AuthContext } from "../../store/AuthContextProvider";
 import MiniEventCard from "../../components/MiniEventCard";
 import { PiArrowCircleRight } from "react-icons/pi";
+import ImageCarousel from "../../components/ImageCarousel";
+import CETImg1 from "../../images/CETImg1.jpg";
+import CETImg2 from "../../images/CETImg2.jpg";
+import CETImg3 from "../../images/CETImg3.jpg";
 
 const StudentHome = () => {
   const navigate = useNavigate();
@@ -23,7 +27,7 @@ const StudentHome = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="flex justify-between h-[85%] p-5 mx-20 mb-10">
+    <div className="lg:flex justify-between h-[85%] py-10 px-24 md:my-14 lg:my-0 lg:mx-20 lg:mb-10 gap-5">
       <div className="flex flex-col justify-around">
         <h1 className="text-5xl font-extralight">Dashboard</h1>
         <div className="flex flex-col gap-5 w-[550px] my-5 bg-[#f8f8f8] p-10 rounded-xl">
@@ -57,6 +61,29 @@ const StudentHome = () => {
               onClick={() => navigate(`/${userState.user_type}/events`)}
             />
           </div>
+        </div>
+      </div>
+      <div className="w-[50%] flex flex-col gap-5 border border-[#F8F9FA] rounded-2xl p-7 hover:shadow-md">
+        <ImageCarousel images={[CETImg1, CETImg3]} />
+        <div className="p-5 flex flex-col gap-5 rounded-lg h-1/2">
+          <h1 className="text-4xl">C E T A A - M C A</h1>
+          <p className="text-base text-justify">
+            The College of Engineering, Trivandrum was established in 1939 as
+            the first Engineering College in the then Travancore State. The
+            first classes were started on 3rd July 1939 during the reign of the
+            Travancore King, Sri Chithira Thirunal Balarama Varma and as the
+            head of the then Travancore state he deserves his share of credit in
+            the establishment of the college. Initially the College was housed
+            in the former office and bungalow of the Chief Engineer (present PMG
+            Office). Maj T.H. Mathewman, a Britisher was the first Principal.
+            Started as a constituent College of Travancore University, the
+            College had an initial intake of 21 students each for Degree and
+            Diploma courses in Civil, Mechanical and Electrical branches. With
+            the establishment of the Directorate of Technical Education in the
+            late fifties, the College administration came under the control of
+            the Government of Kerala. The College was shifted to the present
+            sprawling 125 acres in 1960.
+          </p>
         </div>
       </div>
     </div>
