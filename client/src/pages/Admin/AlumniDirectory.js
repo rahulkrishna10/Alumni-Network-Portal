@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
+import { FaAngleLeft, FaAngleRight, FaFileCsv } from "react-icons/fa6";
 
 const AlumniDirectory = () => {
   const [data, setData] = useState([]);
@@ -15,7 +15,7 @@ const AlumniDirectory = () => {
       .catch((e) => console.log(e.message));
   }, []);
 
-  const pageSize = 6;
+  const pageSize = 5;
   const totalPageCount = Math.ceil(data.length / pageSize);
 
   const filteredData = data
@@ -28,7 +28,6 @@ const AlumniDirectory = () => {
 
   const handleYearChange = (e) => {
     setSelectedYear(e.target.value);
-    console.log("Year selected");
     setCurrentPage(0);
   };
 
@@ -42,6 +41,26 @@ const AlumniDirectory = () => {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+
+  const downloadCsv = () => {
+    const csvContent = filteredData.map((row) =>
+      Object.keys(row)
+        .filter((key) => key !== "isProfile")
+        .map((key) => (row[key] ? row[key] : "null"))
+        .join(",")
+    );
+
+    const csvString = csvContent.join("\n");
+    const blob = new Blob([csvString], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "alumni_data.csv";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   };
 
   return (
@@ -147,6 +166,13 @@ const AlumniDirectory = () => {
               <FaAngleRight />
             </button>
           )}
+          <button
+            className="p-2 w-8 h-8 border flex items-center text-black text-xs rounded-full"
+            title="Download Alumni Data"
+            onClick={downloadCsv}
+          >
+            <FaFileCsv />
+          </button>
         </div>
       </div>
     </div>

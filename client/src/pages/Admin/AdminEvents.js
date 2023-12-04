@@ -5,6 +5,7 @@ import DeletePopup from "../../components/DeletePopup";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import CreateEvent from "../../components/CreateEvent";
 import EditEvent from "../../components/EditEvent";
+import RSVPModal from "../../components/RSVPModal";
 
 const AlumniEvents = () => {
   const [events, setEvents] = useState([]);
@@ -12,6 +13,7 @@ const AlumniEvents = () => {
   const [popup, setPopup] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
   const [editModal, setEditModal] = useState(false);
+  const [rsvpModal, setRSVPModal] = useState(false);
   const [selectedEventId, setSelectedEventId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
@@ -87,7 +89,9 @@ const AlumniEvents = () => {
     <div className="m-20 w-full mt-16 gap-7 relative">
       <div
         className={
-          (`-z-50` && popup) || modalPopup || editModal ? `blur-sm` : ``
+          (`-z-50` && popup) || modalPopup || editModal || rsvpModal
+            ? `blur-sm`
+            : ``
         }
       >
         <div className={`text-left w-full mt-3`}>
@@ -171,11 +175,15 @@ const AlumniEvents = () => {
                       )
                   )}
                   <td className="p-5">
-                    {event.rsvp
-                      ? event.rsvp.filter(
-                          (response) => response.response === "yes"
-                        ).length
-                      : 0}
+                    <button
+                      className="text-[#007BFF]"
+                      onClick={() => {
+                        setRSVPModal(!rsvpModal);
+                        setSelectedEventId(event._id);
+                      }}
+                    >
+                      View
+                    </button>
                   </td>
                   <td className="p-5">
                     <div className="flex gap-2 justify-between rounded-md">
@@ -263,6 +271,15 @@ const AlumniEvents = () => {
           className="absolute bg-white h-auto w-[700px] top-[5%] left-[17%] z-50"
           onClose={() => setEditModal(false)}
           selectedEventData={selectedEventData}
+        />
+      ) : (
+        ""
+      )}
+      {rsvpModal ? (
+        <RSVPModal
+          className="absolute bg-white h-auto w-[400px] top-[15%] left-[27%] z-50 rounded-xl"
+          onClose={() => setRSVPModal(false)}
+          selectedEventId={selectedEventId}
         />
       ) : (
         ""

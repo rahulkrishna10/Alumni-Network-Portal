@@ -160,12 +160,41 @@ router.get("/admin/events", async (req, res) => {
   try {
     const event = await Event.find();
     if (!event) {
-      res.status(404).send("No Events Found");
+      res.status(404).send("No events found");
       return;
     }
     res.status(200).send(event);
   } catch (err) {
     res.status(500).send({ error: "Server Error" });
+  }
+});
+
+//Get event rsvp
+router.get("/admin/event/:id", async (req, res) => {
+  try {
+    const event = await Event.findById(req.params.id);
+    if (!event) {
+      res.status(404).send("No events found");
+      return;
+    }
+
+    const rsvpEntries = event.rsvp;
+    const userIds = rsvpEntries.map((entry) => entry.user);
+    const users = await User.find({ _id: { $in: userIds } }, "_id email name");
+
+    const rsvpObjects = rsvpEntries.map((entry) => {
+      const user = users.find((user) => user._id.equals(entry.user));
+      return {
+        userId: user._id,
+        email: user.email,
+        name: user.name,
+        response: entry.response,
+      };
+    });
+
+    res.status(200).send(rsvpObjects);
+  } catch (err) {
+    res.status(500).send({ error: "Server Error", details: err.message });
   }
 });
 
