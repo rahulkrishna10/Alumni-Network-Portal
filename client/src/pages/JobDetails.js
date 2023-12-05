@@ -65,6 +65,17 @@ const JobDetails = () => {
         <div className="flex flex-col gap-5">
           <h2 className="text-gray-600">About</h2>
           <p className="text-justify leading-7">{data.description}</p>
+          <div>
+            <h2 className="text-gray-600">Skills</h2>
+            <ul className="list-disc pl-5">
+              {data.required_skills &&
+                data.required_skills.map((skill, index) => (
+                  <li key={index} className="text-lg">
+                    {skill}
+                  </li>
+                ))}
+            </ul>
+          </div>
           <div className="mt-2">
             {data.contact ? (
               <a

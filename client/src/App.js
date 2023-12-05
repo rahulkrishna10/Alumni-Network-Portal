@@ -30,10 +30,12 @@ import AdminHome from "./pages/Admin/AdminHome";
 import AlumniDirectory from "./pages/Admin/AlumniDirectory";
 import AdminEvents from "./pages/Admin/AdminEvents";
 import ManageUsers from "./pages/Admin/ManageUsers";
+import LandingPage from "./pages/LandingPage";
 
 function App() {
   return (
     <Routes>
+      <Route path="/" element={<LandingPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/admin/login" element={<AdminLogin />} />

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AdminContext } from "../store/AdminContextProvider";
+import { useNavigate } from "react-router-dom";
 
 const AdminLogin = () => {
   const [formData, setFormData] = useState({
@@ -8,8 +9,8 @@ const AdminLogin = () => {
   });
 
   const { login } = useContext(AdminContext);
-
   const [error, setError] = useState(false);
+  const navigate = useNavigate();
 
   const onChangeHandler = (e) => {
     setFormData({
@@ -30,41 +31,52 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="border border-[#F8F8FA]">
-        <form
-          onSubmit={onSubmitHandler}
-          className="flex flex-col items-center gap-5 p-8"
-        >
-          <div className="flex gap-3 items-center">
-            <label htmlFor="username">Username</label>
+    <div className="bg-gray-900 text-black h-screen flex items-center justify-center">
+      <div className="max-w-lg w-full p-8 bg-white rounded-md shadow-md">
+        <h1 className="text-4xl font-extrabold mb-4 text-gray-800">
+          Admin Login
+        </h1>
+        <form className="mb-6" onSubmit={onSubmitHandler}>
+          <div className="mb-4">
+            <label
+              htmlFor="username"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Username
+            </label>
             <input
-              onChange={onChangeHandler}
               type="text"
               name="username"
-              className="bg-[#F8F9FA] p-2"
+              onChange={onChangeHandler}
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
-          <div className="flex gap-3 items-center">
-            <label htmlFor="password">Password</label>
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700"
+            >
+              Password
+            </label>
             <input
-              onChange={onChangeHandler}
               type="password"
               name="password"
-              className="bg-[#F8F9FA] p-2"
+              onChange={onChangeHandler}
+              className="mt-1 p-2 w-full border rounded-md"
             />
           </div>
-          <button type="submit" className="bg-[#007BFF] text-white p-3 w-full">
+          <button
+            type="submit"
+            className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-full"
+          >
             Login
           </button>
-          {error ? (
-            <span className="text-red-600">
-              Username and password are required
-            </span>
-          ) : (
-            ""
-          )}
         </form>
+        {error && (
+          <p className="text-sm text-red-600">
+            Username and password are required
+          </p>
+        )}
       </div>
     </div>
   );

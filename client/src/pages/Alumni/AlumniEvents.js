@@ -12,11 +12,18 @@ const AlumniEvents = () => {
     const headers = {
       Authorization: `Bearer ${userState.token}`,
     };
+
     axios
       .get(BASE_URL + "/alumni/events", { headers })
-      .then((response) => setEvents(response.data))
+      .then((response) => {
+        const currentDate = new Date();
+        const upcomingEvents = response.data.filter(
+          (event) => new Date(event.startDate) > currentDate
+        );
+
+        setEvents(upcomingEvents);
+      })
       .catch((e) => console.log(e.message));
-    // eslint-disable-next-line
   }, []);
 
   return (

@@ -63,12 +63,13 @@ const LoginForm = () => {
         </div>
         <form
           onSubmit={submitHandler}
+          autoComplete="off"
           action="POST"
           className="w-full md:m-5 p-5 flex flex-col justify-center gap-5 rounded-lg md:min-w-[400px] lg:min-w-[400px]"
         >
           <input
             name="email"
-            className="p-3 focus:outline-none border border-[#dbdbdb] rounded-xl"
+            className="p-3 focus:outline-none border border-[#dbdbdb] rounded-xl bg-white"
             type="email"
             placeholder="Email"
             onChange={emailChangeHandler}
@@ -76,7 +77,7 @@ const LoginForm = () => {
           <div className="w-full flex align-middle justify-between gap-3 relative">
             <input
               name="password"
-              className="w-full p-3 focus:outline-none border border-[#dbdbdb] rounded-xl"
+              className="w-full p-3 focus:outline-none border border-[#dbdbdb] rounded-xl bg-white"
               type={isShow ? "text" : "password"}
               placeholder="Password"
               onChange={passwordChangeHandler}

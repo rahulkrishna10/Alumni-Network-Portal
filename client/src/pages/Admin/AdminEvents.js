@@ -277,7 +277,7 @@ const AlumniEvents = () => {
       )}
       {rsvpModal ? (
         <RSVPModal
-          className="absolute bg-white h-auto w-[400px] top-[15%] left-[27%] z-50 rounded-xl"
+          className="absolute bg-white h-auto w-[400px] top-[15%] left-[27%] z-50 rounded-xl border shadow-xl"
           onClose={() => setRSVPModal(false)}
           selectedEventId={selectedEventId}
         />
