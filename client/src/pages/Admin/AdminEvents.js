@@ -147,7 +147,7 @@ const AlumniEvents = () => {
                       )
                   )}
                   <th className="p-5 text-[#474747] text-lg font-light">
-                    RSVP (Yes)
+                    RSVP
                   </th>
                   <th className="p-5 text-[#474747] text-lg font-light">
                     Actions

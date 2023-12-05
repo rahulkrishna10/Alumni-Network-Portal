@@ -5,12 +5,14 @@ import { FiSearch } from "react-icons/fi";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa6";
 import DeletePopup from "../../components/DeletePopup";
 import NewUserModal from "../../components/NewUserModal";
+import UplodaModal from "../../components/UploadModal";
 
 const ManageUsers = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [popup, setPopup] = useState(false);
   const [modalPopup, setModalPopup] = useState(false);
+  const [uploadModal, setUploadModal] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [currentPage, setCurrentPage] = useState(0);
@@ -76,7 +78,11 @@ const ManageUsers = () => {
 
   return (
     <div className="md:m-20 w-full md:mt-16 gap-7 relative p-5">
-      <div className={(`-z-50` && modalPopup) || popup ? `blur-sm` : ``}>
+      <div
+        className={
+          (`-z-50` && modalPopup) || popup || uploadModal ? `blur-sm` : ``
+        }
+      >
         <div className={`text-left w-full mt-3`}>
           <div className="flex flex-col md:flex-row justify-between">
             <span className="text-left font-mono text-2xl py-5">
@@ -107,6 +113,12 @@ const ManageUsers = () => {
                 onClick={() => setModalPopup(!modalPopup)}
               >
                 Add User
+              </button>
+              <button
+                className="bg-[#007BFF] text-white px-3 py-2 rounded-md"
+                onClick={() => setUploadModal(!modalPopup)}
+              >
+                Upload
               </button>
             </div>
           </div>
@@ -226,6 +238,14 @@ const ManageUsers = () => {
         <NewUserModal
           className="absolute bg-white h-auto md:w-[600px] top-[5%] left-[18%] md:left-[20%] z-50"
           onClose={() => setModalPopup(false)}
+        />
+      ) : (
+        ""
+      )}
+      {uploadModal ? (
+        <UplodaModal
+          className="absolute bg-white h-auto md:w-[600px] top-[5%] left-[18%] md:left-[20%] z-50"
+          onClose={() => setUploadModal(false)}
         />
       ) : (
         ""

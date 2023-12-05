@@ -4,6 +4,7 @@ const Event = require("../models/events");
 const User = require("../models/user");
 const Job = require("../models/jobs");
 
+const fs = require("fs").promises;
 const router = new express.Router();
 
 //Create Admin
@@ -70,6 +71,25 @@ router.get("/admin/directory", async (req, res) => {
   }
 });
 
+//Create a list of users
+router.post("/admin/users/upload", async (req, res) => {
+  try {
+    if (!req.files || !req.files.file) {
+      return res.status(400).json({ error: "No file uploaded." });
+    }
+
+    const fileBuffer = req.files.file.data.toString();
+    const users = JSON.parse(fileBuffer);
+
+    const createdUsers = await User.create(users);
+
+    res.json(createdUsers);
+  } catch (error) {
+    console.error("Error:", error);
+    res.status(500).json({ error: error.message });
+  }
+});
+
 //Get User Count
 router.get("/admin/users/count", async (req, res) => {
   try {
@@ -87,9 +107,10 @@ router.get("/admin/users/count", async (req, res) => {
   }
 });
 
+//Get user created dates
 router.get("/admin/users/created_dates", async (req, res) => {
   try {
-    const users = await User.find({}, "_id name createdAt"); // Fetching only necessary fields
+    const users = await User.find({}, "_id name createdAt");
     const userData = users.map((user) => ({
       userId: user._id,
       name: user.name,
