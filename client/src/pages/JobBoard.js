@@ -65,7 +65,7 @@ const JobBoard = () => {
       )}
       <div className="flex flex-col items-start mx-5 gap-5 p-5">
         <h1 className="text-2xl font-mono">Jobs & Internships</h1>
-        <div className="mb-3 flex items-center gap-5">
+        <div className="mb-3 flex flex-col lg:flex-row w-full lg:items-center gap-5">
           <label className="mr-2">Filter:</label>
           <select
             value={filter}

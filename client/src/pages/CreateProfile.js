@@ -67,14 +67,14 @@ const CreateProfile = () => {
     formSubmit(e);
   };
   return (
-    <div className="mt-5 mb-20">
+    <div className="mt-5">
       <h1 className="text-3xl font-mono">Create Profile</h1>
       <form
         onSubmit={onsubmitHandler}
         className="mt-5 p-5 border border-[#F8F9FA] shadow-sm flex flex-col gap-5"
       >
         <h2 className="text-2xl font-semibold">Basic Info</h2>
-        <div className="flex gap-3">
+        <div className="flex flex-col md:flex-row gap-3">
           <div className="w-full flex flex-col gap-2">
             <label htmlFor="">Passing Out Year</label>
             <input
@@ -143,7 +143,7 @@ const CreateProfile = () => {
           </>
         )}
         <h1 className="text-2xl font-semibold">Contacts</h1>
-        <div className="flex gap-3">
+        <div className="flex flex-col md:flex-row gap-3">
           <div className="w-full flex flex-col gap-2">
             <label htmlFor="">LinkedIn</label>
             <input

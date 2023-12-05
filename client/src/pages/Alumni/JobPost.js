@@ -80,7 +80,7 @@ const JobPost = () => {
 
   return (
     <div className="mx-10 mt-5 lg:px-32">
-      <div className="flex items-center lg:px-20 lg:ml-20 my-5">
+      <div className="w-full flex items-center justify-start lg:px-20 md:my-5">
         <MdOutlineArrowLeft className="text-black" />
         <button className="hover:underline" onClick={() => navigate(-1)}>
           Go Back

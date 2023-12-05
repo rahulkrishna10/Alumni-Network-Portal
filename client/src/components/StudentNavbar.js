@@ -36,7 +36,7 @@ const StudentNavbar = () => {
         <span>ANP</span>
       </span>
       <div className="flex flex-row items-center gap-5">
-        <div className="flex flex-row items-center gap-5 pr-5 border-r-2 border-[#F8F9FA]">
+        <div className="flex flex-row items-center gap-5 text-sm lg:text-base lg:pr-5 md:border-r-2 border-[#F8F9FA]">
           <form
             onSubmit={searchButtonHandler}
             className="flex items-center bg-[#F8F9FA] p-1 px-3"
@@ -45,7 +45,7 @@ const StudentNavbar = () => {
               type="text"
               name="search"
               placeholder="Search People"
-              className="p-1 w-[250px] font-mono outline-none bg-inherit"
+              className="p-1 w-full md:w-[250px] font-mono outline-none bg-inherit"
               onChange={onChangeHandler}
             />
             <button type="submit">
@@ -69,11 +69,14 @@ const StudentNavbar = () => {
           </NavLink>
         </div>
         <div className="flex flex-row items-center gap-2 border border-[#F8F9FA] p-2 relative hover:shadow-sm">
-          <button className="text-black" onClick={dropDownHandler}>
+          <button
+            className="text-black text-xs lg:text-base"
+            onClick={dropDownHandler}
+          >
             My Account
           </button>
           {isDropDown && (
-            <div className="flex flex-col items-center gap-2 absolute right-[0px] top-16 border border-[#F8F9FA] px-3 py-5 w-[150px] z-10">
+            <div className="flex flex-col items-center gap-2 absolute right-[0px] top-16 border border-[#F8F9FA] px-3 py-5 w-[150px] z-10 bg-white">
               <NavLink
                 onClick={() => {
                   setIsDropDown(false);

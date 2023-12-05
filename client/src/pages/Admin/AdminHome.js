@@ -95,9 +95,9 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="m-20 w-full flex flex-col items-center justify-center mt-16 gap-7">
-      <div className="flex flex-col justify-between">
-        <div className="flex items-center justify-around gap-5">
+    <div className="md:m-20 w-full flex flex-col items-center md:justify-center md:mt-16 gap-7">
+      <div className="flex flex-col md:justify-between gap-5">
+        <div className="flex flex-col md:flex-row items-center justify-around gap-5">
           {count.usersCount ? (
             <>
               <div className="w-[300px] p-5 rounded-lg shadow-md relative border border-[#F8F9FA]">
@@ -141,8 +141,8 @@ const AdminHome = () => {
           </div>
         </div>
 
-        <div className="flex justify-between">
-          <div className="min-w-[1000px] h-auto mx-7 my-10 py-5 px-5 flex flex-col justify-between gap-5 items-center shadow-lg rounded-lg border border-[#F8F9FA]">
+        <div className="w-[300px] md:w-full flex flex-col md:flex-row justify-between">
+          <div className="md:min-w-[1000px] h-auto md:mx-7 md:my-10 py-5 px-5 flex flex-col justify-between gap-5 items-center shadow-lg rounded-lg border border-[#F8F9FA]">
             <h1 className="text-xl font-semibold place-self-start">
               New Users
             </h1>
@@ -158,7 +158,7 @@ const AdminHome = () => {
               <p>Loading user data...</p>
             )}{" "}
           </div>
-          <div className="w-full mx-7 my-10 py-5 px-5 shadow-lg border border-[#F8F9FA] flex flex-col justify-between gap-5 rounded-lg">
+          <div className="w-full md:mx-7 my-10 py-5 px-5 shadow-lg border border-[#F8F9FA] flex flex-col justify-between gap-5 rounded-lg">
             <div className="">
               <h1 className="text-xl font-semibold">Recent Users</h1>
               <p className="text-sm text-neutral-500 mt-3">

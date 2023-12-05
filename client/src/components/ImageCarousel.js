@@ -20,7 +20,7 @@ const ImageCarousel = ({ images }) => {
       <img
         src={images[currentImage]}
         alt={`Image ${currentImage + 1}`}
-        className="w-full h-[500px] object-fill bg-fixed transition duration-300 ease-in-out hover:opacity-60"
+        className="w-full h-[500px] object-cover lg:object-fill bg-fixed transition duration-300 ease-in-out hover:opacity-60"
       />
       <div className="flex justify-between">
         <MdArrowBackIosNew

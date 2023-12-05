@@ -32,7 +32,7 @@ const AdminLogin = () => {
 
   return (
     <div className="bg-gray-900 text-black h-screen flex items-center justify-center">
-      <div className="max-w-lg w-full p-8 bg-white rounded-md shadow-md">
+      <div className="max-w-lg w-full m-5 md:m-0 p-8 bg-white rounded-md shadow-md">
         <h1 className="text-4xl font-extrabold mb-4 text-gray-800">
           Admin Login
         </h1>

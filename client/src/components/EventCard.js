@@ -12,7 +12,7 @@ const EventCard = ({ data, user }) => {
   const description = data.description;
   const truncatedDescription = description.substring(0, 150) + "...";
   return (
-    <div className="w-[300px] h-auto lg:w-[550px] mx-10 lg:mx-0 lg:h-[300px] border border-[#F8F9FA] p-5 flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-lg">
+    <div className="w-full h-auto lg:w-[550px] md:mx-10 lg:mx-0 lg:h-[300px] border border-[#F8F9FA] p-5 flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-lg">
       <div className="flex justify-start gap-5 items-center">
         <div className="flex flex-col text-center border justify-center w-[80px] h-[80px] rounded-full bg-blue-100">
           <span className="text-3xl leading-none text-[#007BFF]">{day}</span>
@@ -28,7 +28,7 @@ const EventCard = ({ data, user }) => {
       <div className="inline-flex gap-3">
         <NavLink
           to={`/${user}/event/${data._id}`}
-          className="w-fit hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm"
+          className="w-full md:w-fit text-center hover:text-white hover:bg-[#007BFF] text-[#007BFF] border border-[#e3e2e4] py-1 px-3 my-2 rounded-sm"
         >
           View Details
         </NavLink>

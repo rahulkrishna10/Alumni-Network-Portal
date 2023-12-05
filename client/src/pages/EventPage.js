@@ -134,7 +134,7 @@ const EventPage = () => {
           </div>
         </div>
         {rsvpChartData && (
-          <div className="lg:w-[300px] lg:h-[300px] flex flex-col items-center p-8">
+          <div className="md:w-[300px] md:h-[300px] flex flex-col items-center md:p-8">
             <h1>RSVP Count</h1>
             <Doughnut
               data={rsvpChartData}

@@ -1,11 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AdminContext } from "../store/AdminContextProvider";
 import { SlHome, SlNote, SlMap, SlUser, SlLogout } from "react-icons/sl";
-import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { GrClose } from "react-icons/gr";
+import { RxHamburgerMenu } from "react-icons/rx";
+import { NavLink, useLocation } from "react-router-dom";
 
 const AdminNavbar = () => {
   const { logout, adminState } = useContext(AdminContext);
   const location = useLocation();
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
 
   const logoutHandler = () => {
     logout(adminState.token);
@@ -16,19 +23,44 @@ const AdminNavbar = () => {
   };
 
   return (
-    <nav className="flex flex-col items-center gap-10 px-5 py-3 shadow-lg min-w-[15%]">
+    <nav className="flex md:flex-col items-start justify-between md:justify-start md:items-center gap-10 md:px-5 md:py-3 md:shadow-lg md:min-w-[15%]">
       <span
-        className="text-[#007BFF] mt-20 text-2xl font-mono tracking-widest"
+        className="text-[#007BFF] md:mt-20 m-5 text-2xl font-mono"
         title="Alumni Network Portal"
       >
-        <span to="/admin/" className="font-semibold">
-          ADMIN
-        </span>
+        <NavLink to="/admin/" className="font-semibold">
+          A D M I N
+        </NavLink>
       </span>
-      <div className="flex flex-col gap-5 min-w-[180px]">
+
+      <div className="md:hidden cursor-pointer" onClick={toggleMobileMenu}>
+        <RxHamburgerMenu className="m-5" />
+      </div>
+
+      <div
+        className={`md:flex flex-col gap-5 min-w-[180px] ${
+          isMobileMenuOpen
+            ? "flex justify-center p-10 absolute w-full h-full bg-white z-10"
+            : "hidden"
+        }`}
+      >
+        {isMobileMenuOpen ? (
+          <GrClose
+            className="absolute top-5 right-5 text-2xl cursor-pointer"
+            onClick={toggleMobileMenu}
+          />
+        ) : (
+          ""
+        )}
+        {isMobileMenuOpen ? (
+          <span className="w-full text-[#007BFF] font-semibold">A D M I N</span>
+        ) : (
+          ""
+        )}
         <NavLink
           to="/admin/"
-          className={`flex gap-2 items-center w-fit ${
+          onClick={() => setMobileMenuOpen(false)}
+          className={`flex gap-2 items-center w-full md:w-fit ${
             isActive("/admin/") &&
             "px-3 py-2 bg-[#007BFF] text-white rounded-lg"
           }`}
@@ -38,7 +70,8 @@ const AdminNavbar = () => {
         </NavLink>
         <NavLink
           to="/admin/users"
-          className={`flex gap-2 items-center w-fit ${
+          onClick={() => setMobileMenuOpen(false)}
+          className={`flex gap-2 items-center w-full md:w-fit ${
             isActive("/admin/users") &&
             "px-3 py-2 bg-[#007BFF] text-white rounded-lg"
           }`}
@@ -48,7 +81,8 @@ const AdminNavbar = () => {
         </NavLink>
         <NavLink
           to="/admin/events"
-          className={`flex gap-2 items-center w-fit ${
+          onClick={() => setMobileMenuOpen(false)}
+          className={`flex gap-2 items-center w-full md:w-fit ${
             isActive("/admin/events") &&
             "px-3 py-2 bg-[#007BFF] text-white rounded-lg"
           }`}
@@ -58,7 +92,8 @@ const AdminNavbar = () => {
         </NavLink>
         <NavLink
           to="/admin/directory"
-          className={`flex gap-2 items-center w-fit ${
+          onClick={() => setMobileMenuOpen(false)}
+          className={`flex gap-2 items-center w-full md:w-fit ${
             isActive("/admin/directory") &&
             "px-3 py-2 bg-[#007BFF] text-white rounded-lg"
           }`}

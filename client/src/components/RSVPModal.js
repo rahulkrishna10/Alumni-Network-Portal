@@ -21,7 +21,7 @@ const RSVPModal = ({ className, selectedEventId, onClose }) => {
         className="absolute top-[3%] right-[4%] text-lg cursor-pointer"
         onClick={onClose}
       />
-      <div className="flex flex-col justify-evenly gap-5 py-12 px-5">
+      <div className="flex flex-col justify-evenly gap-5 md:py-12 md:px-5 p-5">
         <h1 className="text-2xl text-center tracking-wide mb-5">RSVP</h1>
         {rsvpData.length > 0 ? (
           <div className="w-[100%] flex flex-col gap-5">

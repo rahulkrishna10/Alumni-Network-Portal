@@ -1,19 +1,13 @@
 import React from "react";
-import { FaLocationDot } from "react-icons/fa6";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MiniEventCard = ({ data, user }) => {
   const navigate = useNavigate();
-  const dateString = data.startDate;
-  const dateObject = new Date(dateString);
-
-  const month = dateObject.toLocaleDateString("en-US", { month: "short" });
-  const day = dateObject.toLocaleDateString("en-US", { day: "numeric" });
 
   const description = data.description;
   const truncatedDescription = description.substring(0, 70) + "...";
   return (
-    <div className="w-[220px] h-[280px] border border-[#f3f2f5] flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-md">
+    <div className="w-full md:w-[220px] h-[280px] border border-[#f3f2f5] flex flex-col justify-between gap-3 my-3 rounded-lg hover:shadow-md">
       <div className="flex flex-col h-full w-full justify-between gap-5">
         <h1
           onClick={() => navigate(`/${user}/event/${data._id}`)}

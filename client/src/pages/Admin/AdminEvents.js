@@ -86,7 +86,7 @@ const AlumniEvents = () => {
   };
 
   return (
-    <div className="m-20 w-full mt-16 gap-7 relative">
+    <div className="md:m-20 w-full md:mt-16 gap-7 relative p-5">
       <div
         className={
           (`-z-50` && popup) || modalPopup || editModal || rsvpModal
@@ -94,14 +94,12 @@ const AlumniEvents = () => {
             : ``
         }
       >
-        <div className={`text-left w-full mt-3`}>
-          <div className="flex justify-between">
-            <span className="text-left font-mono text-2xl py-5">
-              Alumni Events
-            </span>
-            <div className="flex gap-5 items-center">
+        <div className="text-left w-full md:mt-3">
+          <div className="flex flex-col md:flex-row justify-between gap-5">
+            <span className="text-left font-mono text-2xl md:py-5">Events</span>
+            <div className="flex gap-5 items-center justify-between">
               <form
-                className="flex items-center bg-[#F8F9FA] p-1 px-3"
+                className="flex items-center bg-[#F8F9FA] p-1 md:px-3"
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleSearch();
@@ -113,7 +111,7 @@ const AlumniEvents = () => {
                   placeholder="Search Event"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="p-1 w-[250px] font-mono outline-none bg-inherit"
+                  className="p-1 w-[200px] md:w-[250px] font-mono outline-none bg-inherit"
                 />
                 <button type="submit">
                   <FiSearch />
@@ -128,90 +126,94 @@ const AlumniEvents = () => {
             </div>
           </div>
         </div>
-        {filteredEvents.length === 0 ? (
-          <div className="text-center text-gray-500 mt-4">No events found.</div>
-        ) : (
-          <table className="w-full text-sm text-left text-black shadow-md">
-            <thead className="text-black capitalize border-b-2">
-              <tr>
-                {Object.keys(events[0] || {}).map(
-                  (key, index) =>
-                    !["__v", "rsvp", "description"].includes(key) && (
-                      <th
-                        className="px-5 text-[#474747] text-lg font-light"
-                        key={index}
-                      >
-                        {key}
-                      </th>
-                    )
-                )}
-                <th className="p-5 text-[#474747] text-lg font-light">
-                  RSVP (Yes)
-                </th>
-                <th className="p-5 text-[#474747] text-lg font-light">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {paginatedEvents.map((event, index) => (
-                <tr className="bg-white" key={index}>
-                  {Object.keys(event).map(
-                    (key) =>
+        <div className="overflow-x-auto shadow-md">
+          {filteredEvents.length === 0 ? (
+            <div className="text-center text-gray-500 mt-4">
+              No events found.
+            </div>
+          ) : (
+            <table className="md:w-full text-sm text-left text-black">
+              <thead className="text-black capitalize border-b-2">
+                <tr>
+                  {Object.keys(events[0] || {}).map(
+                    (key, index) =>
                       !["__v", "rsvp", "description"].includes(key) && (
-                        <td className="p-5 text-[16px] text-base" key={key}>
-                          {key === "startDate"
-                            ? event[key]
-                              ? new Date(event[key]).toLocaleString("en-US", {
-                                  year: "numeric",
-                                  month: "short",
-                                  day: "numeric",
-                                })
-                              : "null"
-                            : !event[key]
-                            ? "null"
-                            : event[key]}
-                        </td>
+                        <th
+                          className="px-5 text-[#474747] text-lg font-light"
+                          key={index}
+                        >
+                          {key}
+                        </th>
                       )
                   )}
-                  <td className="p-5">
-                    <button
-                      className="text-[#007BFF]"
-                      onClick={() => {
-                        setRSVPModal(!rsvpModal);
-                        setSelectedEventId(event._id);
-                      }}
-                    >
-                      View
-                    </button>
-                  </td>
-                  <td className="p-5">
-                    <div className="flex gap-2 justify-between rounded-md">
+                  <th className="p-5 text-[#474747] text-lg font-light">
+                    RSVP (Yes)
+                  </th>
+                  <th className="p-5 text-[#474747] text-lg font-light">
+                    Actions
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {paginatedEvents.map((event, index) => (
+                  <tr className="bg-white" key={index}>
+                    {Object.keys(event).map(
+                      (key) =>
+                        !["__v", "rsvp", "description"].includes(key) && (
+                          <td className="p-5 text-[16px] text-base" key={key}>
+                            {key === "startDate"
+                              ? event[key]
+                                ? new Date(event[key]).toLocaleString("en-US", {
+                                    year: "numeric",
+                                    month: "short",
+                                    day: "numeric",
+                                  })
+                                : "null"
+                              : !event[key]
+                              ? "null"
+                              : event[key]}
+                          </td>
+                        )
+                    )}
+                    <td className="p-5">
                       <button
-                        className="border p-2"
+                        className="text-[#007BFF]"
                         onClick={() => {
-                          setEditModal(!editModal);
-                          handleEditEvent(event._id);
-                        }}
-                      >
-                        Edit
-                      </button>
-                      <button
-                        className="border p-2"
-                        onClick={() => {
-                          setPopup(!popup);
+                          setRSVPModal(!rsvpModal);
                           setSelectedEventId(event._id);
                         }}
                       >
-                        Delete
+                        View
                       </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
+                    </td>
+                    <td className="p-5">
+                      <div className="flex gap-2 justify-between rounded-md">
+                        <button
+                          className="border p-2"
+                          onClick={() => {
+                            setEditModal(!editModal);
+                            handleEditEvent(event._id);
+                          }}
+                        >
+                          Edit
+                        </button>
+                        <button
+                          className="border p-2"
+                          onClick={() => {
+                            setPopup(!popup);
+                            setSelectedEventId(event._id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </div>
 
         {filteredEvents.length > 0 && (
           <div className="flex gap-5 m-5">
@@ -260,7 +262,7 @@ const AlumniEvents = () => {
       )}
       {modalPopup ? (
         <CreateEvent
-          className="absolute bg-white h-auto w-[700px] top-[5%] left-[17%] z-50"
+          className="absolute bg-white h-auto md:w-[700px] top-[5%] left-[8%] md:left-[17%] z-50"
           onClose={() => setModalPopup(false)}
         />
       ) : (
@@ -268,7 +270,7 @@ const AlumniEvents = () => {
       )}
       {editModal ? (
         <EditEvent
-          className="absolute bg-white h-auto w-[700px] top-[5%] left-[17%] z-50"
+          className="absolute bg-white h-auto md:w-[700px] top-[5%] left-[8%] md:left-[17%] z-50"
           onClose={() => setEditModal(false)}
           selectedEventData={selectedEventData}
         />
@@ -277,7 +279,7 @@ const AlumniEvents = () => {
       )}
       {rsvpModal ? (
         <RSVPModal
-          className="absolute bg-white h-auto w-[400px] top-[15%] left-[27%] z-50 rounded-xl border shadow-xl"
+          className="absolute bg-white h-auto md:w-[400px] top-[15%] left-[25%] md:left-[27%] z-50 rounded-xl border shadow-xl"
           onClose={() => setRSVPModal(false)}
           selectedEventId={selectedEventId}
         />

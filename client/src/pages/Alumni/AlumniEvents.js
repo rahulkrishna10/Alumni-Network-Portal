@@ -28,9 +28,9 @@ const AlumniEvents = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="p-10 mx-10 flex flex-col items-center lg:items-start gap-5">
+      <div className="p-10 md:mx-10 flex flex-col md:items-center lg:items-start gap-5">
         <h1 className="text-2xl md:px-10 font-mono">Upcoming Events</h1>
-        <div className="lg:px-10 flex flex-row mx-5 flex-wrap gap-3 items-center justify-between">
+        <div className="lg:px-10 flex flex-row md:mx-5 flex-wrap gap-3 md:items-center justify-start md:justify-between">
           {events.map((data) => {
             return (
               <EventCard

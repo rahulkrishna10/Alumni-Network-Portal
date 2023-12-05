@@ -48,12 +48,12 @@ const CreateEvent = ({ className, onClose }) => {
       />
       <form
         onSubmit={submitHandler}
-        className="flex flex-col justify-evenly gap-5 border py-12 px-5 rounded-xl shadow-xl"
+        className="flex flex-col justify-evenly gap-5 md:py-12 md:px-5 p-5 rounded-xl shadow-xl"
       >
         <h1 className="text-2xl text-center tracking-wide mb-5">
           Create Event
         </h1>
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <div className="w-[100%] flex flex-col gap-1 p-2">
             <label className="text-lg text-gray-600" htmlFor="title">
               Title
@@ -78,7 +78,7 @@ const CreateEvent = ({ className, onClose }) => {
             ></input>
           </div>
         </div>
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <div className="w-[100%] flex flex-col gap-1 p-2">
             <label className="text-lg text-gray-600" htmlFor="type">
               Event exclusively for
@@ -111,7 +111,7 @@ const CreateEvent = ({ className, onClose }) => {
         </div>
         <div className="w-[100%] flex flex-col gap-1 p-2">
           <h2 className="text-lg text-gray-600">Contacts</h2>
-          <div className="w-[100%] flex gap-2">
+          <div className="w-[100%] flex flex-col md:flex-row gap-2">
             <input
               onChange={onChangeHandler}
               className="flex-1 p-2 outline-[#007BFF] border border-[#F8F9FA] shadow-sm"

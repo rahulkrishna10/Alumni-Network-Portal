@@ -64,9 +64,9 @@ const AlumniDirectory = () => {
   };
 
   return (
-    <div className="p-10 w-full mt-14">
-      <h1 className="text-2xl mx-10 font-mono">Alumni Directory</h1>
-      <div className="mx-10 mt-6">
+    <div className="md:p-10 w-full md:mt-14 p-5">
+      <h1 className="text-2xl mx-5 md:mx-10 font-mono">Alumni Directory</h1>
+      <div className="mx-5 md:mx-10 md:mt-6">
         <label className="mr-2">Filter:</label>
         <select
           className="p-2 bg-white border rounded-s"
@@ -84,8 +84,8 @@ const AlumniDirectory = () => {
         </select>
       </div>
 
-      <div className="mx-10 my-20 flex flex-col items-start mt-10">
-        <table className="w-full text-left text-black shadow-md">
+      <div className="md:mx-10 md:my-20 flex flex-col items-start md:mt-10 p-5 shadow-md overflow-x-auto">
+        <table className="w-full text-left text-black">
           <thead className="text-black text-base capitalize border-b-2">
             <tr>
               {Object.keys(filteredData[0] || {}).map(

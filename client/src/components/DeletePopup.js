@@ -4,7 +4,7 @@ import { SlClose } from "react-icons/sl";
 const Popup = ({ className, onClose, onDelete }) => {
   return (
     <div
-      className={`${className} delete-popup transition-opacity duration-500 ease-in-out shadow-md`}
+      className={`${className} transition-opacity duration-500 ease-in-out shadow-md`}
     >
       <h1 className="text-2xl">Confirm Delete</h1>
       <SlClose

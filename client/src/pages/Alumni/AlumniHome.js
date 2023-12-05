@@ -6,7 +6,6 @@ import MiniEventCard from "../../components/MiniEventCard";
 import { PiArrowCircleRight } from "react-icons/pi";
 import ImageCarousel from "../../components/ImageCarousel";
 import CETImg1 from "../../images/CETImg1.jpg";
-import CETImg2 from "../../images/CETImg2.jpg";
 import CETImg3 from "../../images/CETImg3.jpg";
 
 const AlumniHome = () => {
@@ -27,7 +26,7 @@ const AlumniHome = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="lg:flex justify-between h-[85%] py-10 px-24 md:my-14 lg:my-0 lg:mx-20 lg:mb-10 gap-5">
+    <div className="lg:flex justify-between h-[85%] py-10 px-5 md:px-24 md:my-14 lg:my-0 lg:mx-20 lg:mb-10 gap-5">
       <div className="lg:flex lg:flex-col lg:justify-around">
         <h1 className="text-5xl font-extralight">Dashboard</h1>
         <div className="flex flex-col gap-5 w-fit lg:w-[550px] my-5 bg-[#f8f8f8] p-10 rounded-xl">
@@ -65,7 +64,7 @@ const AlumniHome = () => {
           </div>
         </div>
       </div>
-      <div className="w-[50%] flex flex-col gap-5 border border-[#F8F9FA] rounded-2xl p-7 hover:shadow-md">
+      <div className="md:w-[50%] h-auto flex flex-col gap-5 border border-[#F8F9FA] rounded-2xl p-2 md:p-7 hover:shadow-md">
         <ImageCarousel images={[CETImg1, CETImg3]} />
         <div className="p-5 flex flex-col gap-5 rounded-lg h-1/2">
           <h1 className="text-4xl">C E T A A - M C A</h1>
@@ -80,11 +79,7 @@ const AlumniHome = () => {
             Office). Maj T.H. Mathewman, a Britisher was the first Principal.
             Started as a constituent College of Travancore University, the
             College had an initial intake of 21 students each for Degree and
-            Diploma courses in Civil, Mechanical and Electrical branches. With
-            the establishment of the Directorate of Technical Education in the
-            late fifties, the College administration came under the control of
-            the Government of Kerala. The College was shifted to the present
-            sprawling 125 acres in 1960.
+            Diploma courses in Civil, Mechanical and Electrical branches.
           </p>
         </div>
       </div>

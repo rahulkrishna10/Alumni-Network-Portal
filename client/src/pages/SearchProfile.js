@@ -26,9 +26,9 @@ const SearchProfile = () => {
     );
   }
   return (
-    <div className="m-10 w-[60%] mx-auto p-10">
+    <div className="m-10 md:w-[60%] mx-auto p-10">
       <h1 className="font-mono text-2xl mb-3">Search Results</h1>
-      <div className="flex gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         {users.map((user) => {
           if (user._id === userState.id) {
             return null;

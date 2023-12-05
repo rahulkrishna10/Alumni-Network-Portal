@@ -11,7 +11,7 @@ const UserCard = ({ data }) => {
     });
   };
   return (
-    <div className="flex justify-stretch items-center border rounded-2xl border-[#F8F9FA] shadow-sm hover:shadow-md my-2 w-[550px] h-[200px]">
+    <div className="flex justify-stretch items-center border rounded-2xl border-[#F8F9FA] shadow-sm hover:shadow-md my-2 md:w-[550px] h-[200px]">
       <div className="h-full flex flex-col justify-between items-center gap-3 bg-[#f7f7f7] p-10 ">
         <span className="w-14 h-14 bg-white text-blue-500 text-4xl flex justify-center items-center rounded-full uppercase">
           {data.name.charAt(0)}

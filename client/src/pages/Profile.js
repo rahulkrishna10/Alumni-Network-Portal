@@ -34,7 +34,7 @@ const Profile = () => {
     // eslint-disable-next-line
   }, []);
   return (
-    <div className="w-[60%] flex flex-col mx-auto my-5">
+    <div className="md:w-[60%] flex flex-col mx-auto p-5 my-5">
       <div className="flex flex-row items-center">
         <MdOutlineArrowLeft className="text-black" />
         <button onClick={() => navigate(-1)} className="hover:underline">

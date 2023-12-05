@@ -34,9 +34,9 @@ const NewUserModal = ({ className, onClose }) => {
       />
       <form
         onSubmit={submitHandler}
-        className="flex flex-col justify-evenly gap-5 border py-16 px-5 rounded-xl shadow-xl"
+        className="flex flex-col justify-evenly gap-5 p-5 md:py-16 md:px-5 rounded-xl shadow-xl"
       >
-        <h2 className="text-2xl text-center tracking-widest mb-5">
+        <h2 className="text-2xl text-center tracking-wide mb-5">
           Create Account
         </h2>
         <div className="flex flex-col gap-2 justify-between px-2">
