@@ -85,6 +85,29 @@ router.get("/users/:id?", auth, async (req, res) => {
   }
 });
 
+// Change Password
+router.patch("/users/change-password", auth, async (req, res) => {
+  try {
+    const user = req.user;
+    const currentPassword = req.body.currentPassword;
+    const newPassword = req.body.newPassword;
+
+    const isMatch = await user.comparePassword(currentPassword);
+    if (!isMatch) {
+      return res.status(400).send({ error: "Current password is incorrect" });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.status(200).send({ message: "Password changed successfully" });
+  } catch (err) {
+    res
+      .status(500)
+      .send({ error: "Internal Server Error", details: err.message });
+  }
+});
+
 //Search Users
 router.get("/users/search/:search?", auth, async (req, res) => {
   try {

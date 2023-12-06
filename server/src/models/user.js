@@ -93,6 +93,11 @@ userSchema.methods.generateAuthToken = async function () {
   return token;
 };
 
+userSchema.methods.comparePassword = async function (candidatePassword) {
+  const user = this;
+  return await bcrypt.compare(candidatePassword, user.password);
+};
+
 //Hash the plain text password
 userSchema.pre("save", async function (next) {
   const user = this;

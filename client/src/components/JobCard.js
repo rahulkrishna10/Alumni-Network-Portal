@@ -9,7 +9,7 @@ const JobCard = ({ data, user }) => {
   const firstThreeSkills = data.required_skills.slice(0, 2);
 
   return (
-    <div className="w-fit md:w-[500px] h-auto border border-[#f3f2f5] p-5 flex flex-col justify-between gap-5 my-3 rounded-lg hover:shadow-lg">
+    <div className="w-fit md:w-[500px] h-auto border border-[#F8F9FA] shadow-md p-5 flex flex-col justify-between gap-5 my-3 rounded-lg hover:shadow-lg">
       <div className="flex justify-between">
         <h2 className="text-lg font-mono">{data.company}</h2>
         <span

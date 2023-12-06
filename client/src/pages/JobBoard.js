@@ -70,7 +70,7 @@ const JobBoard = () => {
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value)}
-            className="p-2 border border-[#F8F9FA] bg-white"
+            className="p-2 border bg-white"
           >
             <option value="all">All Listings</option>
             <option value="internship">Only Internships</option>
@@ -80,7 +80,7 @@ const JobBoard = () => {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="p-2 border border-[#F8F9FA] bg-white"
+            className="p-2 border bg-white"
             placeholder="Enter job title or skills..."
           />
         </div>

@@ -5,11 +5,13 @@ import { AuthContext } from "../store/AuthContextProvider";
 import { MdOutlineArrowLeft } from "react-icons/md";
 import EditForm from "./EditForm";
 import CreateProfile from "../pages/CreateProfile";
+import PasswordModal from "./PasswordModal";
 
 const UserProfile = () => {
   const { userState } = useContext(AuthContext);
   const [data, setData] = useState({});
   const [profileStatus, setProfileStatus] = useState(false);
+  const [modal, setModal] = useState(false);
   const [currentPage, setCurrentPage] = useState("userProfile");
 
   useEffect(() => {
@@ -107,15 +109,31 @@ const UserProfile = () => {
               )}
             </div>
           </div>
-          <button
-            onClick={() => setCurrentPage("editProfile")}
-            className="p-2 border border-[#e7e8e9] rounded-lg text-[#007BFF] hover:text-white hover:bg-[#007BFF]"
-          >
-            Edit Profile
-          </button>
+          <div className="flex items-center gap-2 justify-center">
+            <button
+              onClick={() => setCurrentPage("editProfile")}
+              className="p-2 border border-[#e7e8e9] rounded-lg text-[#007BFF] hover:text-white hover:bg-[#007BFF]"
+            >
+              Edit Profile
+            </button>
+            <button
+              className="p-2 border border-[#e7e8e9] rounded-lg text-[#007BFF] hover:text-white hover:bg-[#007BFF]"
+              onClick={() => setModal(!modal)}
+            >
+              Change Password
+            </button>
+          </div>
         </div>
       )}
       {currentPage === "editProfile" && <EditForm data={data} />}
+      {modal ? (
+        <PasswordModal
+          onClose={() => setModal(false)}
+          className="absolute bg-white h-auto md:w-[700px] top-[20%] left-[8%] md:left-[30%] z-50"
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };
