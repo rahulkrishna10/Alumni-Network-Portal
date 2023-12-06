@@ -95,7 +95,7 @@ const AdminHome = () => {
   };
 
   return (
-    <div className="m-20 w-full flex flex-col items-center md:justify-center md:mt-16 gap-7">
+    <div className="md:m-20 w-full flex flex-col items-center md:justify-center md:mt-16 gap-7">
       <div className="flex flex-col md:justify-between">
         <div className="flex flex-col md:flex-row items-center justify-around gap-5">
           {count.usersCount ? (

@@ -115,7 +115,7 @@ const ManageUsers = () => {
                 Add User
               </button>
               <button
-                className="bg-[#007BFF] text-white px-3 py-2 rounded-md"
+                className="text-[#007BFF] border bg-white px-3 py-2 rounded-md"
                 onClick={() => setUploadModal(!modalPopup)}
               >
                 Upload
